@@ -12,15 +12,14 @@ namespace GridMaster
 
         public string[]? Fonts { get; set; }
         public int NumberOfRows { get; set; } = 9;
-        public int NumberOfCols { get; set; } = 21;
-        public string BlackIcon { get; set; } = ".\\1.jpg";
+        public int NumberOfCols { get; set; } = 22;
         public string BlackIconExt { get; set; } = "jpg";
-        public string WhiteIcon { get; set; } = ".\\0.txt";
         public string WhiteIconExt { get; set; } = "txt";
+        public bool Running { get; set; } = false;
 
         public int Frame { get; set; } = 0;
 
-        public List<string> Screen{ get; set; }
+        public List<string> Screen { get; set; }
         public string ExtraSpace
         {
             get
@@ -34,12 +33,12 @@ namespace GridMaster
             }
         }
 
-        internal string Preview(string word="")
+        internal string Preview(string word = "")
         {
             var result = "";
             if (word != "")
-               UpdateScreen(word);
-            
+                UpdateScreen(word);
+
             for (int i = 0; i < NumberOfRows; i++)
             {
                 result += Screen[i].Replace("@", "") + Environment.NewLine;
@@ -47,6 +46,32 @@ namespace GridMaster
 
             return result;
         }
+
+
+        internal string PreviewFrame()
+        {
+            if (Screen == null || Screen.Count < 1)
+                return "$";
+
+            var preview = "|";
+            for (int i = 0; i < NumberOfRows; i++)
+            {
+
+                for (int j = 0; j < NumberOfCols; j++)
+                {
+                    var pixel = Screen[i][j + Frame];
+                    preview += (pixel);
+
+                }
+                preview += "|" + Environment.NewLine + "|";
+            }
+
+            return preview;
+        }
+
+
+
+
 
         public Generator()
         {
@@ -61,7 +86,6 @@ namespace GridMaster
 
             var start = (int)ch - (int)'A';
             start = start * 8;
-            if (ch == '#') start = Fonts.Length - 17;
 
             if (start > Fonts.Length || start < 0)
                 start = Fonts.Length - 8;
@@ -110,73 +134,71 @@ namespace GridMaster
 
         public void UpdateScreen(string word)
         {
-            Screen= Word(word);
+            Screen = Word(word);
         }
 
 
-        public string Icons(string path)
+        public void Icons(string path)
         {
-            Directory.GetFiles(path).ToList().ForEach(File.Delete);
-            var file = 0;
-            var preview = "|";
+            if (Screen == null || Screen.Count < 1)
+                return;
 
-            for (int i = 0; i < NumberOfRows; i++)
-            {
-
-                for (int j = 0; j < NumberOfCols; j++)
+            new Thread(() =>
                 {
-                    var pixel = Screen[i][j+Frame];
-                    var filename = file.ToString();
-                    if (file < 10)
-                        filename = "000" + file;
-                    else if (file < 100)
-                        filename = "00" + file;
-                    else filename = "0" + file;
+                    if (Running)
+                        return;
+                    Running = true;
+                    Directory.GetFiles(path).ToList().ForEach(File.Delete);
+                    var file = 0;
+
+                    for (int i = 0; i < NumberOfRows; i++)
+                    {
+
+                        for (int j = 0; j < NumberOfCols; j++)
+                        {
+                            var pixel = Screen[i][j + Frame];
+                            var filename = file.ToString();
+                            if (file < 10)
+                                filename = "000" + file;
+                            else if (file < 100)
+                                filename = "00" + file;
+                            else filename = "0" + file;
 
 
 
 
-                    if (pixel == ' ' || pixel == '@')
+                            if (pixel == ' ' || pixel == '@')
 
-                        File.Copy( WhiteIcon, Path.Combine(path, filename) + "."+  WhiteIconExt, true);
-                    else
-                        File.Copy( BlackIcon, Path.Combine(path, filename) +"."+ BlackIconExt, true);
+                                File.Copy(".\\0.txt", Path.Combine(path, filename) + "." + WhiteIconExt, true);
+                            else
+                                File.Copy(".\\1.jpg", Path.Combine(path, filename) + "." + BlackIconExt, true);
 
-                    Thread.Sleep(10);
-                    file++;
-                    preview += (pixel);
+                            Thread.Sleep(10);
+                            file++;
 
-                }
-                preview += "|" + Environment.NewLine+ "|";
-            }
-            return preview;
+
+                        }
+
+                    }
+                    Running = false;
+                }).Start();
         }
 
         public void Next(Directions direction = Directions.LEFT2RIGHT)
         {
+            if (Screen == null || Screen.Count < 1)
+                return;
+
+
             if (direction == Directions.LEFT2RIGHT)
             {
-                //if (Screen[0].Length < NumberOfCols)
-                //    Screen = Word(ExtraSpace);
 
-                //for (int i = 0; i < Screen.Count; i++)
-                //{
-                //    Screen[i] = Screen[i].Substring(1);
-                //}
                 Frame++;
-              //  if(Frame)
                 return;
             }
 
-            for (int i = 0; i < Screen.Count; i++)
-            {
-                // Screen[i] = Screen[i].Substring(0, Screen[i].Length-1);
-                Frame--;
-                if (Frame < 0) Frame = 0;
-
-            }
-
-
+            Frame--;
+            if (Frame < 0) Frame = Screen.Count;
 
 
         }

@@ -61,6 +61,7 @@
             this.radioBlack = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
+            this.btnMin = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -79,29 +80,31 @@
             this.txtText.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtText.Location = new System.Drawing.Point(3, 19);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(738, 50);
+            this.txtText.Size = new System.Drawing.Size(766, 50);
             this.txtText.TabIndex = 0;
             this.txtText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtText_KeyUp);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtText);
-            this.groupBox1.Location = new System.Drawing.Point(14, 13);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(744, 83);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(772, 83);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text to Display";
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.numRows);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.numCols);
-            this.groupBox2.Location = new System.Drawing.Point(474, 105);
+            this.groupBox2.Location = new System.Drawing.Point(474, 185);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(290, 89);
             this.groupBox2.TabIndex = 2;
@@ -164,7 +167,7 @@
             this.numCols.Size = new System.Drawing.Size(54, 23);
             this.numCols.TabIndex = 0;
             this.numCols.Value = new decimal(new int[] {
-            21,
+            22,
             0,
             0,
             0});
@@ -183,13 +186,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnPre);
             this.groupBox3.Controls.Add(this.btnNext);
             this.groupBox3.Controls.Add(this.btnPause);
             this.groupBox3.Controls.Add(this.btnPlay);
-            this.groupBox3.Location = new System.Drawing.Point(474, 296);
+            this.groupBox3.Location = new System.Drawing.Point(474, 95);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(290, 132);
+            this.groupBox3.Size = new System.Drawing.Size(290, 84);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Media Control";
@@ -197,7 +201,7 @@
             // btnPre
             // 
             this.btnPre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPre.Location = new System.Drawing.Point(41, 52);
+            this.btnPre.Location = new System.Drawing.Point(37, 29);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(49, 43);
             this.btnPre.TabIndex = 4;
@@ -208,7 +212,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNext.Location = new System.Drawing.Point(206, 52);
+            this.btnNext.Location = new System.Drawing.Point(202, 29);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(49, 43);
             this.btnNext.TabIndex = 3;
@@ -220,7 +224,7 @@
             // 
             this.btnPause.BackColor = System.Drawing.Color.Khaki;
             this.btnPause.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPause.Location = new System.Drawing.Point(151, 52);
+            this.btnPause.Location = new System.Drawing.Point(147, 29);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(49, 43);
             this.btnPause.TabIndex = 2;
@@ -230,7 +234,7 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(96, 52);
+            this.btnPlay.Location = new System.Drawing.Point(92, 29);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(49, 43);
             this.btnPlay.TabIndex = 1;
@@ -255,10 +259,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtPath);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.btnOpenFolder);
-            this.groupBox4.Location = new System.Drawing.Point(474, 200);
+            this.groupBox4.Location = new System.Drawing.Point(474, 280);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(290, 90);
             this.groupBox4.TabIndex = 6;
@@ -275,10 +280,12 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Controls.Add(this.btnMin);
             this.groupBox5.Controls.Add(this.groupBox7);
             this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Controls.Add(this.groupBox6);
-            this.groupBox5.Location = new System.Drawing.Point(14, 296);
+            this.groupBox5.Location = new System.Drawing.Point(14, 241);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(453, 132);
             this.groupBox5.TabIndex = 7;
@@ -334,11 +341,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(229, 90);
+            this.button2.Location = new System.Drawing.Point(229, 91);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(206, 32);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Apply";
+            this.button2.Text = "Generate";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.apply);
             // 
@@ -391,10 +398,12 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox8.Controls.Add(this.txtPreview);
-            this.groupBox8.Location = new System.Drawing.Point(12, 102);
+            this.groupBox8.Location = new System.Drawing.Point(12, 89);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(456, 188);
+            this.groupBox8.Size = new System.Drawing.Size(456, 146);
             this.groupBox8.TabIndex = 8;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Preview";
@@ -410,22 +419,32 @@
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.ReadOnly = true;
             this.txtPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtPreview.Size = new System.Drawing.Size(450, 166);
+            this.txtPreview.Size = new System.Drawing.Size(450, 124);
             this.txtPreview.TabIndex = 0;
             this.txtPreview.Text = "$";
             this.txtPreview.WordWrap = false;
+            // 
+            // btnMin
+            // 
+            this.btnMin.Location = new System.Drawing.Point(14, 90);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(206, 32);
+            this.btnMin.TabIndex = 3;
+            this.btnMin.Text = "Minimize";
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 433);
+            this.ClientSize = new System.Drawing.Size(774, 378);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
             this.Name = "MainFRM";
             this.Opacity = 0.95D;
@@ -487,5 +506,6 @@
         private RadioButton radioButton2;
         private GroupBox groupBox8;
         private TextBox txtPreview;
+        private Button btnMin;
     }
 }

@@ -26,7 +26,8 @@ namespace GridMaster
                 if (Generator.Screen[0].Length < Generator.NumberOfCols)
                     Generator.Screen = Generator.Word(txtText.Text + Generator.ExtraSpace);
 
-                txtPreview.Text=  Generator.Icons(Path);
+                txtPreview.Text= Generator.PreviewFrame();
+                Generator.Icons(Path);
 
 
 
@@ -60,19 +61,22 @@ namespace GridMaster
         private void btnNext_Click(object sender, EventArgs e)
         {
             Generator.Next(Directions.LEFT2RIGHT);
-            txtPreview.Text =  Generator.Icons(Path);
+            txtPreview.Text = Generator.PreviewFrame();
+            Generator.Icons(Path);
         }
 
         private void btnPre_Click(object sender, EventArgs e)
         {
             Generator.Next(Directions.RIGHT2LEFT);
-            txtPreview.Text = Generator.Icons(Path);
+            txtPreview.Text = Generator.PreviewFrame(); 
+            Generator.Icons(Path);
 
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+            timer1_Tick( sender,  e);
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -89,7 +93,7 @@ namespace GridMaster
             if(flasher%2==0)
                 btnPlay.BackColor = Color.Khaki;
             else
-                btnPlay.BackColor = Color.Beige;
+                btnPlay.BackColor = Color.Red;
 
             btnPause.BackColor = btnNext.BackColor;
 
@@ -101,6 +105,16 @@ namespace GridMaster
         {
             if (e.KeyCode == Keys.Escape)
                 btnPause_Click(null, null);
+
+            if (e.KeyCode == Keys.F2)
+
+            btnNext_Click(null, null);
+
+            if (e.KeyCode == Keys.F3)
+                btnPre_Click(null, null);
+
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -133,6 +147,7 @@ namespace GridMaster
         private void apply(object sender, EventArgs e)
         {
             Generator.Icons(Path);
+            txtPreview.Text = Generator.PreviewFrame();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -160,6 +175,13 @@ namespace GridMaster
         private void txtWhiteExt_Click(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            this.Width = 520;
+            this.Height = 110;
+            txtText.Focus();
         }
     }
 }
