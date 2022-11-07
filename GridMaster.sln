@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32408.312
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridMaster", "GridMaster\GridMaster.csproj", "{CA399749-87AA-4A03-B1F2-043CB0508905}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA399749-87AA-4A03-B1F2-043CB0508905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA399749-87AA-4A03-B1F2-043CB0508905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA399749-87AA-4A03-B1F2-043CB0508905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA399749-87AA-4A03-B1F2-043CB0508905}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F5B1BCC-4B60-4439-98C0-1EDB5D899B33}
+	EndGlobalSection
+EndGlobal
