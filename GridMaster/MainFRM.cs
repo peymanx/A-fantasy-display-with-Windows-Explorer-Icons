@@ -16,6 +16,8 @@ namespace GridMaster
 
         private void txtText_KeyUp(object sender, KeyEventArgs e)
         {
+            txtPreview.Text = Generator.Preview(txtText.Text);
+            btnPause_Click(sender, e);
             if (e.KeyCode == Keys.Enter)
             {
                 Generator.Frame = 0;
@@ -24,10 +26,9 @@ namespace GridMaster
                 if (Generator.Screen[0].Length < Generator.NumberOfCols)
                     Generator.Screen = Generator.Word(txtText.Text + Generator.ExtraSpace);
 
-                Generator.Icons(Path);
+                txtPreview.Text=  Generator.Icons(Path);
 
 
-                txtPreview.Text = Generator.Preview();
 
             }
         }
@@ -59,13 +60,13 @@ namespace GridMaster
         private void btnNext_Click(object sender, EventArgs e)
         {
             Generator.Next(Directions.LEFT2RIGHT);
-            Generator.Icons(Path);
+            txtPreview.Text =  Generator.Icons(Path);
         }
 
         private void btnPre_Click(object sender, EventArgs e)
         {
             Generator.Next(Directions.RIGHT2LEFT);
-            Generator.Icons(Path);
+            txtPreview.Text = Generator.Icons(Path);
 
         }
 
@@ -81,10 +82,15 @@ namespace GridMaster
             btnPlay.BackColor = btnNext.BackColor;
 
         }
-
+        int flasher = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            btnPlay.BackColor = Color.Khaki;
+            flasher++;
+            if(flasher%2==0)
+                btnPlay.BackColor = Color.Khaki;
+            else
+                btnPlay.BackColor = Color.Beige;
+
             btnPause.BackColor = btnNext.BackColor;
 
             btnNext_Click(null, null);

@@ -34,9 +34,11 @@ namespace GridMaster
             }
         }
 
-        internal string Preview()
+        internal string Preview(string word="")
         {
             var result = "";
+            if (word != "")
+               UpdateScreen(word);
             
             for (int i = 0; i < NumberOfRows; i++)
             {
@@ -44,8 +46,6 @@ namespace GridMaster
             }
 
             return result;
-
-
         }
 
         public Generator()
@@ -114,14 +114,11 @@ namespace GridMaster
         }
 
 
-        public void Icons(string path)
+        public string Icons(string path)
         {
             Directory.GetFiles(path).ToList().ForEach(File.Delete);
-           // UpdateScreen(" " + word + ExtraSpace);
             var file = 0;
-
-          //  if (Screen[0].Length < NumberOfCols)
-             //   Screen = Word(word + ExtraSpace);
+            var preview = "|";
 
             for (int i = 0; i < NumberOfRows; i++)
             {
@@ -147,11 +144,12 @@ namespace GridMaster
 
                     Thread.Sleep(10);
                     file++;
-                    Console.Write(pixel);
+                    preview += (pixel);
 
                 }
-                Console.WriteLine("|");
+                preview += "|" + Environment.NewLine+ "|";
             }
+            return preview;
         }
 
         public void Next(Directions direction = Directions.LEFT2RIGHT)
