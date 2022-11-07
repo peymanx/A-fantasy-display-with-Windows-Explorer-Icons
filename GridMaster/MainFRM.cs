@@ -3,11 +3,11 @@ namespace GridMaster
     public partial class MainFRM : Form
     {
         public string Path = @".\Video";
-
-
-
-
         public Generator Generator = new Generator();
+
+
+
+
 
         public MainFRM()
         {
@@ -16,7 +16,7 @@ namespace GridMaster
 
         private void txtText_KeyUp(object sender, KeyEventArgs e)
         {
-            txtPreview.Text = Generator.Preview(txtText.Text);
+            txtPreview.Text =Generator.Preview(txtText.Text);
             btnPause_Click(sender, e);
             if (e.KeyCode == Keys.Enter)
             {
@@ -182,6 +182,19 @@ namespace GridMaster
             this.Width = 520;
             this.Height = 110;
             txtText.Focus();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+           
+
+            new DesignerFRM(Generator, Path).ShowDialog();
+            this.Show();
+
+            apply(sender, e);
+
+
         }
     }
 }

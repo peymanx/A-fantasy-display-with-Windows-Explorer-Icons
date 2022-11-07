@@ -16,6 +16,7 @@ namespace GridMaster
         public string BlackIconExt { get; set; } = "jpg";
         public string WhiteIconExt { get; set; } = "txt";
         public bool Running { get; set; } = false;
+        public bool Boom { get; set; } = false;
 
         public int Frame { get; set; } = 0;
 
@@ -145,8 +146,8 @@ namespace GridMaster
 
             new Thread(() =>
                 {
-                    if (Running)
-                        return;
+                    //if (Running)
+                     //   return;
                     Running = true;
                     Directory.GetFiles(path).ToList().ForEach(File.Delete);
                     var file = 0;
@@ -173,7 +174,7 @@ namespace GridMaster
                             else
                                 File.Copy(".\\1.jpg", Path.Combine(path, filename) + "." + BlackIconExt, true);
 
-                            Thread.Sleep(10);
+                            Thread.Sleep(2);
                             file++;
 
 

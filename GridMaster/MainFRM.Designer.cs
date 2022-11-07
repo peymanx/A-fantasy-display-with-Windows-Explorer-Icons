@@ -50,6 +50,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnMin = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtWhiteExt = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -61,7 +62,11 @@
             this.radioBlack = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
-            this.btnMin = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -72,6 +77,7 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtText
@@ -80,7 +86,7 @@
             this.txtText.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtText.Location = new System.Drawing.Point(3, 19);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(766, 50);
+            this.txtText.Size = new System.Drawing.Size(768, 50);
             this.txtText.TabIndex = 0;
             this.txtText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtText_KeyUp);
             // 
@@ -90,7 +96,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(772, 83);
+            this.groupBox1.Size = new System.Drawing.Size(774, 83);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text to Display";
@@ -280,17 +286,28 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.btnMin);
             this.groupBox5.Controls.Add(this.groupBox7);
             this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Controls.Add(this.groupBox6);
-            this.groupBox5.Location = new System.Drawing.Point(14, 241);
+            this.groupBox5.Location = new System.Drawing.Point(14, 363);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(453, 132);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Icons Options";
+            // 
+            // btnMin
+            // 
+            this.btnMin.Location = new System.Drawing.Point(14, 90);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(206, 32);
+            this.btnMin.TabIndex = 3;
+            this.btnMin.Text = "Minimize";
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // groupBox7
             // 
@@ -311,7 +328,7 @@
             this.txtWhiteExt.Name = "txtWhiteExt";
             this.txtWhiteExt.Size = new System.Drawing.Size(100, 33);
             this.txtWhiteExt.TabIndex = 2;
-            this.txtWhiteExt.Text = "HTML";
+            this.txtWhiteExt.Text = "blah";
             this.txtWhiteExt.Click += new System.EventHandler(this.txtWhiteExt_Click);
             this.txtWhiteExt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtWhiteExt_KeyUp);
             // 
@@ -398,12 +415,13 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.txtPreview);
             this.groupBox8.Location = new System.Drawing.Point(12, 89);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(456, 146);
+            this.groupBox8.Size = new System.Drawing.Size(456, 268);
             this.groupBox8.TabIndex = 8;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Preview";
@@ -419,32 +437,73 @@
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.ReadOnly = true;
             this.txtPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtPreview.Size = new System.Drawing.Size(450, 124);
+            this.txtPreview.Size = new System.Drawing.Size(450, 246);
             this.txtPreview.TabIndex = 0;
             this.txtPreview.Text = "$";
             this.txtPreview.WordWrap = false;
             // 
-            // btnMin
+            // groupBox9
             // 
-            this.btnMin.Location = new System.Drawing.Point(14, 90);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(206, 32);
-            this.btnMin.TabIndex = 3;
-            this.btnMin.Text = "Minimize";
-            this.btnMin.UseVisualStyleBackColor = true;
-            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.button5);
+            this.groupBox9.Controls.Add(this.textBox2);
+            this.groupBox9.Controls.Add(this.button3);
+            this.groupBox9.Controls.Add(this.button4);
+            this.groupBox9.Location = new System.Drawing.Point(473, 378);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(290, 110);
+            this.groupBox9.TabIndex = 9;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Designer";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(6, 22);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(237, 23);
+            this.textBox2.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(249, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(35, 29);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 51);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(278, 29);
+            this.button4.TabIndex = 3;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button5.Location = new System.Drawing.Point(5, 81);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(278, 29);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "✏️ Paint";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 378);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(774, 500);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.KeyPreview = true;
             this.Name = "MainFRM";
             this.Opacity = 0.95D;
@@ -468,6 +527,8 @@
             this.groupBox6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -507,5 +568,10 @@
         private GroupBox groupBox8;
         private TextBox txtPreview;
         private Button btnMin;
+        private GroupBox groupBox9;
+        private Button button5;
+        private TextBox textBox2;
+        private Button button3;
+        private Button button4;
     }
 }
