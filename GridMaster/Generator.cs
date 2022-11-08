@@ -146,8 +146,9 @@ namespace GridMaster
 
             new Thread(() =>
                 {
-                    //if (Running)
-                     //   return;
+                  //  if (Running)
+                    //    return;
+
                     Running = true;
                     Directory.GetFiles(path).ToList().ForEach(File.Delete);
                     var file = 0;

@@ -62,6 +62,8 @@ namespace GridMaster
                     if (pixel == "X")
                         btn.BackColor = Color.Black;
                     btn.Click += Btn_Click;
+
+
                     flowLayoutPanel1.Controls.Add(btn);
                 }
             }
@@ -78,7 +80,7 @@ namespace GridMaster
                 btn.BackColor = Color.Black;
                 Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "X");
 
-
+                
             }
             else
 
