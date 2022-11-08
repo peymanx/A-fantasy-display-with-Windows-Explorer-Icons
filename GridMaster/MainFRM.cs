@@ -36,7 +36,10 @@ namespace GridMaster
 
             }
         }
-
+        public void DeleteAllFiles()
+        {
+            Directory.GetFiles(Path).ToList().ForEach(File.Delete);
+        }
         private void btnOpenFolder_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", Path);
@@ -46,7 +49,9 @@ namespace GridMaster
         private void MainFRM_Load(object sender, EventArgs e)
         {
             txtPath.Text = Path;
-            Directory.GetFiles(Path).ToList().ForEach(File.Delete);
+            DeleteAllFiles();
+
+
         }
 
         private void numCols_ValueChanged(object sender, EventArgs e)
@@ -200,8 +205,8 @@ namespace GridMaster
 
         private void btnMin_Click(object sender, EventArgs e)
         {
-            this.Width = 520;
-            this.Height = 120;
+            this.Width = 500;
+            this.Height = 140;
             txtText.Focus();
         }
 
@@ -227,6 +232,7 @@ namespace GridMaster
 
             if (clock_enabled)
             {
+                DeleteAllFiles();
                 btnClock.BackColor = Color.Cyan;
                 timer1_Tick(null, null);
             }
@@ -272,14 +278,15 @@ namespace GridMaster
             {
                 Filter = "text file|*.txt"
             };
-            file = file.Replace("@", " " );
+            file = file.Replace("@", " ");
             if (save.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(save.FileName, file);
-               toolLog.Text= $"Data saved to the file ({save.FileName})";
+                toolLog.Text = $"Data saved to the file ({save.FileName})";
 
             }
         }
+       
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -291,10 +298,37 @@ namespace GridMaster
             if (open.ShowDialog() == DialogResult.OK)
             {
                 var file = File.ReadAllText(open.FileName);
-                Generator.Screen = file.Split(Environment.NewLine).ToList();
+                var lines = file.Split(Environment.NewLine).ToList();
+                var max = lines.Max().Length;
+                if (max < Generator.NumberOfCols)
+                    max = Generator.NumberOfCols;
+                var result = new List<string>();
+                foreach (var line in lines)
+                {
+                    var item= line;
+                    if (line.Length < max)
+                        item += Generator.Space(max - line.Length);
+
+                    result.Add(item);
+
+                }
+
+
+                if(result.Count< Generator.NumberOfRows)
+                {
+          
+                    for (int i = 0; i <= Generator.NumberOfRows- result.Count; i++)
+                    {
+                        result.Add(Generator.Space(max));
+                    }
+                    
+                }
+
+
+                Generator.Screen = result;
                 Generator.Frame = 0;
 
-                txtPreview.Text = Generator.Preview();
+                apply(sender, e);
                 txtText.Text = "@" + open.FileName;
                 toolLog.Text = "File opened successfully";
             }

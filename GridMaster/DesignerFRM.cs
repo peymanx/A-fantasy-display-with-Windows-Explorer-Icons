@@ -47,24 +47,33 @@ namespace GridMaster
 
                 for (int j = 0; j < Generator.NumberOfCols; j++)
                 {
-                    var pixel = Generator.Screen[i][j].ToString();
-                    var btn = new Button
+                    try
                     {
-                        Text = i+","+j,
-                        BackColor = Color.White,
-                        Width = pixel_size,
-                        Height = pixel_size,
-                        Tag = new Grid(i, j),
-                        Margin = new Padding(0),
+
+                        var pixel = Generator.Screen[i][j].ToString();
+                        var btn = new Button
+                        {
+                            Text = i + "," + j,
+                            BackColor = Color.White,
+                            Width = pixel_size,
+                            Height = pixel_size,
+                            Tag = new Grid(i, j),
+                            Margin = new Padding(0),
 
 
-                    };
-                    if (pixel == "X")
-                        btn.BackColor = Color.Black;
-                    btn.Click += Btn_Click;
+                        };
+                        if (pixel != " " && pixel != "@")
+                            btn.BackColor = Color.Black;
+                        btn.Click += Btn_Click;
 
 
-                    flowLayoutPanel1.Controls.Add(btn);
+                        flowLayoutPanel1.Controls.Add(btn);
+                    }
+                    catch 
+                    {
+                        // :( DONT TELL ANY ONE- NO WAY OUT
+
+                    }
                 }
             }
 

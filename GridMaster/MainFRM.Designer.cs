@@ -191,9 +191,9 @@
             // btnOpenFolder
             // 
             this.btnOpenFolder.BackColor = System.Drawing.Color.Cornsilk;
-            this.btnOpenFolder.Location = new System.Drawing.Point(6, 51);
+            this.btnOpenFolder.Location = new System.Drawing.Point(161, 51);
             this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(278, 29);
+            this.btnOpenFolder.Size = new System.Drawing.Size(123, 29);
             this.btnOpenFolder.TabIndex = 3;
             this.btnOpenFolder.Text = "📂  Open Folder";
             this.btnOpenFolder.UseVisualStyleBackColor = false;
@@ -326,7 +326,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button2.BackColor = System.Drawing.Color.DarkGray;
             this.button2.Location = new System.Drawing.Point(213, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.button2.Name = "button2";
@@ -338,7 +338,6 @@
             // 
             // txtBlue
             // 
-            this.txtBlue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBlue.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBlue.Location = new System.Drawing.Point(365, 38);
             this.txtBlue.Name = "txtBlue";
@@ -368,7 +367,6 @@
             // 
             // txtGreen
             // 
-            this.txtGreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGreen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtGreen.Location = new System.Drawing.Point(278, 38);
             this.txtGreen.Name = "txtGreen";
@@ -380,7 +378,6 @@
             // 
             // txtRed
             // 
-            this.txtRed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRed.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtRed.Location = new System.Drawing.Point(191, 38);
             this.txtRed.Name = "txtRed";
@@ -410,7 +407,6 @@
             // 
             // txtWhiteExt
             // 
-            this.txtWhiteExt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWhiteExt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWhiteExt.Location = new System.Drawing.Point(104, 39);
             this.txtWhiteExt.Name = "txtWhiteExt";
@@ -423,7 +419,6 @@
             // 
             // textBox1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(17, 38);
             this.textBox1.Name = "textBox1";
@@ -488,6 +483,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSave.Location = new System.Drawing.Point(148, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(135, 29);
@@ -509,11 +505,12 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button4.Location = new System.Drawing.Point(7, 16);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(136, 29);
             this.button4.TabIndex = 3;
-            this.button4.Text = "📂 Open file ...";
+            this.button4.Text = "📂 Open a file ...";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

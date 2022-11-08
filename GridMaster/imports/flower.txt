@@ -1,0 +1,13 @@
+       R      G         
+G     RRR    GG         
+GGG  RR RR GGGG  BBBB   
+GGGG  RRR GGGGG BBBBB   
+ GGGG  R  GGGG   BBBB   
+  GGG     GGG           
+    G    G              
+     GG G               
+                        
+                        
+                        
+                        
+                        

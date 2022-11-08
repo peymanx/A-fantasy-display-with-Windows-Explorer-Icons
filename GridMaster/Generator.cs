@@ -25,7 +25,15 @@ namespace GridMaster
         // current frame
         public int Frame { get; set; } = 0;
 
-
+        public string Space(int n)
+        {
+            var spaces = "";
+            for (int i = 0; i < n; i++)
+            {
+                spaces += " ";
+            }
+            return spaces;
+        }
         public List<string> Screen { get; set; }
         public string ExtraSpace
         {
@@ -82,10 +90,10 @@ namespace GridMaster
                         var pixel = Screen[i][j + Frame];
                         preview += (pixel);
                     }
-                    catch (System.IndexOutOfRangeException)
+                    catch 
                     {
 
-                        
+                        // :(  DONT TELL ANY ONE
                     }
 
                 }
@@ -212,6 +220,11 @@ namespace GridMaster
                                 var white = Path.Combine(path, filename) + "." + WhiteIconExt;
                                 var black = Path.Combine(path, filename) + "." + BlackIconExt;
 
+                                // rgb
+                                var r = Path.Combine(path, filename) + "." + RedIconExt;
+                                var g = Path.Combine(path, filename) + "." + GreenIconExt;
+                                var b = Path.Combine(path, filename) + "." + BlueIconExt;
+
 
                                 if (pixel == ' ' || pixel == '@')
                                 {
@@ -222,8 +235,37 @@ namespace GridMaster
 
                                     }
                                 }
+                                else if(pixel == 'r' || pixel == 'R')
+                                {
+                                    if (File.Exists(white) == false)
+                                    {
+                                        File.Copy(".\\0.txt", r, true);
+                                        File.Delete(black);
+
+                                    }
+                                }
+                                else if (pixel == 'g' || pixel == 'G')
+                                {
+                                    if (File.Exists(white) == false)
+                                    {
+                                        File.Copy(".\\0.txt", g, true);
+                                        File.Delete(black);
+
+                                    }
+                                }
+                                else if (pixel == 'b' || pixel == 'B')
+                                {
+                                    if (File.Exists(white) == false)
+                                    {
+                                        File.Copy(".\\0.txt", b, true);
+                                        File.Delete(black);
+
+                                    }
+                                }
+
                                 else
                                 {
+
                                     if (File.Exists(black) == false)
                                     {
                                         File.Copy(".\\1.jpg", black, true);
@@ -238,9 +280,9 @@ namespace GridMaster
                                 file++;
 
                             }
-                            catch (System.IndexOutOfRangeException)
+                            catch 
                             {
-
+                                // :( DONT TELL ANY ONE
                              
                             }
 
