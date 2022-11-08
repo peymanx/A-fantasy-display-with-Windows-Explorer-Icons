@@ -79,22 +79,14 @@ namespace GridMaster
             {
                 btn.BackColor = Color.Black;
                 Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "X");
-
-                
             }
             else
-
             {
-  
                 btn.BackColor = Color.White;
                 Generator.Screen[grid.Y]=  Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, " ");
-
             }
 
             Generator.Icons(Path);
-
-
-
 
         }
     }

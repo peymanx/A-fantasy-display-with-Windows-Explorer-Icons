@@ -18,7 +18,9 @@ namespace GridMaster
         public bool Running { get; set; } = false;
         public bool Boom { get; set; } = false;
 
+        // current frame
         public int Frame { get; set; } = 0;
+
 
         public List<string> Screen { get; set; }
         public string ExtraSpace
@@ -33,6 +35,15 @@ namespace GridMaster
                 return extra_space;
             }
         }
+
+
+        public Generator()
+        {
+            Fonts = File.ReadAllText("font.txt").Split(Environment.NewLine);
+            Screen = Word(ExtraSpace); // make a BLANK screen at start up
+
+        }
+
 
         internal string Preview(string word = "")
         {
@@ -74,11 +85,7 @@ namespace GridMaster
 
 
 
-        public Generator()
-        {
-            Fonts = File.ReadAllText("font.txt").Split(Environment.NewLine);
 
-        }
 
         public List<string> Character(char ch)
         {
@@ -146,11 +153,11 @@ namespace GridMaster
 
             new Thread(() =>
                 {
-                  //  if (Running)
+                    //  if (Running)
                     //    return;
 
                     Running = true;
-                    Directory.GetFiles(path).ToList().ForEach(File.Delete);
+                    //Directory.GetFiles(path).ToList().ForEach(File.Delete);
                     var file = 0;
 
                     for (int i = 0; i < NumberOfRows; i++)
@@ -167,13 +174,30 @@ namespace GridMaster
                             else filename = "0" + file;
 
 
+                            var white = Path.Combine(path, filename) + "." + WhiteIconExt;
+                            var black = Path.Combine(path, filename) + "." + BlackIconExt;
 
 
                             if (pixel == ' ' || pixel == '@')
+                            {
+                                if (File.Exists(white) == false)
+                                {
+                                    File.Copy(".\\0.txt", white, true);
+                                    File.Delete(black);
 
-                                File.Copy(".\\0.txt", Path.Combine(path, filename) + "." + WhiteIconExt, true);
+                                }
+                            }
                             else
-                                File.Copy(".\\1.jpg", Path.Combine(path, filename) + "." + BlackIconExt, true);
+                            {
+                                if (File.Exists(black) == false)
+                                {
+                                    File.Copy(".\\1.jpg", black, true);
+                                    File.Delete(white);
+
+                                }
+                            }
+
+               
 
                             Thread.Sleep(2);
                             file++;

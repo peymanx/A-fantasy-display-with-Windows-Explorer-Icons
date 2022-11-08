@@ -16,7 +16,7 @@ namespace GridMaster
 
         private void txtText_KeyUp(object sender, KeyEventArgs e)
         {
-            txtPreview.Text =Generator.Preview(txtText.Text);
+            txtPreview.Text = Generator.Preview(txtText.Text);
             btnPause_Click(sender, e);
             if (e.KeyCode == Keys.Enter)
             {
@@ -26,7 +26,7 @@ namespace GridMaster
                 if (Generator.Screen[0].Length < Generator.NumberOfCols)
                     Generator.Screen = Generator.Word(txtText.Text + Generator.ExtraSpace);
 
-                txtPreview.Text= Generator.PreviewFrame();
+                txtPreview.Text = Generator.PreviewFrame();
                 Generator.Icons(Path);
 
 
@@ -43,6 +43,7 @@ namespace GridMaster
         private void MainFRM_Load(object sender, EventArgs e)
         {
             txtPath.Text = Path;
+            Directory.GetFiles(Path).ToList().ForEach(File.Delete);
         }
 
         private void numCols_ValueChanged(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace GridMaster
         private void btnPre_Click(object sender, EventArgs e)
         {
             Generator.Next(Directions.RIGHT2LEFT);
-            txtPreview.Text = Generator.PreviewFrame(); 
+            txtPreview.Text = Generator.PreviewFrame();
             Generator.Icons(Path);
 
         }
@@ -76,7 +77,7 @@ namespace GridMaster
         private void btnPlay_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
-            timer1_Tick( sender,  e);
+            timer1_Tick(sender, e);
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -90,7 +91,7 @@ namespace GridMaster
         private void timer1_Tick(object sender, EventArgs e)
         {
             flasher++;
-            if(flasher%2==0)
+            if (flasher % 2 == 0)
                 btnPlay.BackColor = Color.Khaki;
             else
                 btnPlay.BackColor = Color.Red;
@@ -108,7 +109,7 @@ namespace GridMaster
 
             if (e.KeyCode == Keys.F2)
 
-            btnNext_Click(null, null);
+                btnNext_Click(null, null);
 
             if (e.KeyCode == Keys.F3)
                 btnPre_Click(null, null);
@@ -119,9 +120,14 @@ namespace GridMaster
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var open= new FolderBrowserDialog();
+            var open = new FolderBrowserDialog();
             if (open.ShowDialog() == DialogResult.OK)
+            {
                 Path = open.SelectedPath;
+                if (MessageBox.Show("If you continue it will delete all the files in the folder; Do you want to continue?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    Directory.GetFiles(Path).ToList().ForEach(File.Delete);
+            }
 
             txtPath.Text = Path;
         }
@@ -140,7 +146,7 @@ namespace GridMaster
         {
             radioCBlack_CheckedChanged(sender, e);
             if (e.KeyCode == Keys.Enter)
-                apply( sender,  e);
+                apply(sender, e);
 
         }
 
@@ -187,7 +193,7 @@ namespace GridMaster
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-           
+
 
             new DesignerFRM(Generator, Path).ShowDialog();
             this.Show();

@@ -63,10 +63,10 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -250,7 +250,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 2200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1
@@ -456,6 +456,17 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Designer";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button5.Location = new System.Drawing.Point(5, 81);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(278, 29);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "✏️ Paint";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Enabled = false;
@@ -480,17 +491,6 @@
             this.button4.Size = new System.Drawing.Size(278, 29);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.button5.Location = new System.Drawing.Point(5, 81);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(278, 29);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "✏️ Paint";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainFRM
             // 
