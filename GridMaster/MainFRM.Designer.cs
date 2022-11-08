@@ -64,9 +64,9 @@
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -445,13 +445,12 @@
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button5);
-            this.groupBox9.Controls.Add(this.textBox2);
-            this.groupBox9.Controls.Add(this.button3);
             this.groupBox9.Controls.Add(this.button4);
-            this.groupBox9.Location = new System.Drawing.Point(473, 378);
+            this.groupBox9.Location = new System.Drawing.Point(473, 415);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(290, 110);
+            this.groupBox9.Size = new System.Drawing.Size(290, 81);
             this.groupBox9.TabIndex = 9;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Designer";
@@ -459,7 +458,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.button5.Location = new System.Drawing.Point(5, 81);
+            this.button5.Location = new System.Drawing.Point(5, 46);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(278, 29);
             this.button5.TabIndex = 6;
@@ -467,36 +466,40 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox2
+            // button4
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(6, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(237, 23);
-            this.textBox2.TabIndex = 0;
+            this.button4.Location = new System.Drawing.Point(7, 16);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(136, 29);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "📂Open Drawing";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(148, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(135, 29);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "💿 Save Drawing";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(249, 19);
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button3.Location = new System.Drawing.Point(480, 378);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 29);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "...";
+            this.button3.Size = new System.Drawing.Size(278, 29);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "⌚ DIGITAL CLOCK ";
             this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 51);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(278, 29);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 500);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox8);
@@ -528,7 +531,6 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -570,8 +572,8 @@
         private Button btnMin;
         private GroupBox groupBox9;
         private Button button5;
-        private TextBox textBox2;
-        private Button button3;
         private Button button4;
+        private Button button6;
+        private Button button3;
     }
 }

@@ -11,6 +11,7 @@ namespace GridMaster
     {
 
         public string[]? Fonts { get; set; }
+        public string[]? Digits { get; set; }
         public int NumberOfRows { get; set; } = 9;
         public int NumberOfCols { get; set; } = 22;
         public string BlackIconExt { get; set; } = "jpg";
@@ -40,6 +41,7 @@ namespace GridMaster
         public Generator()
         {
             Fonts = File.ReadAllText("font.txt").Split(Environment.NewLine);
+            Digits = File.ReadAllText("digits.txt").Split(Environment.NewLine);
             Screen = Word(ExtraSpace); // make a BLANK screen at start up
 
         }
@@ -91,15 +93,34 @@ namespace GridMaster
         {
             ch = Char.Parse(ch.ToString().ToUpper());
             var lines = new List<string>();
+            var start = 0;
 
-            var start = (int)ch - (int)'A';
-            start = start * 8;
+            if (ch >= '0' && ch <= '9' || ch ==':')
+            {
+                start = (int)ch - (int)'0';
 
-            if (start > Fonts.Length || start < 0)
-                start = Fonts.Length - 8;
-            for (var i = start; i < start + 7; i++)
-                lines.Add(Fonts[i].Replace(" @", ""));
+                start = start * 8;
+                if(ch== ':')
+                    start = Digits.Length - 8;
 
+                for (var i = start; i < start + 7; i++)
+                    lines.Add(Digits[i].Replace(" @", ""));
+            }
+            else
+            {
+
+                start = (int)ch - (int)'A';
+                start = start * 8;
+
+                if (start > Fonts.Length || start < 0)
+                    start = Fonts.Length - 8;
+                for (var i = start; i < start + 7; i++)
+                    lines.Add(Fonts[i].Replace(" @", ""));
+
+
+
+
+            }
             if (lines.Count < NumberOfRows)
             {
                 for (int i = 0; i <= (NumberOfRows - lines.Count) / 2; i++)
@@ -109,7 +130,6 @@ namespace GridMaster
                 }
                 lines.Add(lines[0]);
             }
-
             return lines;
         }
 
@@ -197,7 +217,7 @@ namespace GridMaster
                                 }
                             }
 
-               
+
 
                             Thread.Sleep(2);
                             file++;
