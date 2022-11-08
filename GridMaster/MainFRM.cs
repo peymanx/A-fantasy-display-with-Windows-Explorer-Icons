@@ -174,35 +174,28 @@ namespace GridMaster
 
         private void apply(object sender, EventArgs e)
         {
+            Directory.GetFiles(Path).ToList().ForEach(File.Delete);
             Generator.Icons(Path);
             txtPreview.Text = Generator.PreviewFrame();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            Generator.WhiteIconExt = "txt";
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            Generator.WhiteIconExt = txtWhiteExt.Text;
-        }
+      
 
         private void txtWhiteExt_KeyUp(object sender, KeyEventArgs e)
         {
-            radioButton2_CheckedChanged(sender, e);
+            Generator.WhiteIconExt = txtWhiteExt.Text;
             if (e.KeyCode == Keys.Enter)
                 apply(sender, e);
         }
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            radioCBlack.Checked = true;
+          //  radioCBlack.Checked = true;
         }
 
         private void txtWhiteExt_Click(object sender, EventArgs e)
         {
-            radioButton1.Checked = true;
+            //radioButton1.Checked = true;
         }
 
         private void btnMin_Click(object sender, EventArgs e)
@@ -245,6 +238,27 @@ namespace GridMaster
         private void txtText_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRed_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.RedIconExt = txtRed.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void txtGreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.GreenIconExt = txtGreen.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void txtBlue_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.BlueIconExt = txtBlue.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
         }
     }
 }

@@ -16,6 +16,9 @@ namespace GridMaster
         public int NumberOfCols { get; set; } = 22;
         public string BlackIconExt { get; set; } = "jpg";
         public string WhiteIconExt { get; set; } = "txt";
+        public string RedIconExt { get; set; } = "pdf";
+        public string GreenIconExt { get; set; } = "xlsx";
+        public string BlueIconExt { get; set; } = "all";
         public bool Running { get; set; } = false;
         public bool Boom { get; set; } = false;
 
@@ -73,8 +76,17 @@ namespace GridMaster
 
                 for (int j = 0; j < NumberOfCols; j++)
                 {
-                    var pixel = Screen[i][j + Frame];
-                    preview += (pixel);
+
+                    try
+                    {
+                        var pixel = Screen[i][j + Frame];
+                        preview += (pixel);
+                    }
+                    catch (System.IndexOutOfRangeException)
+                    {
+
+                        
+                    }
 
                 }
                 preview += "|" + Environment.NewLine + "|";
@@ -95,12 +107,12 @@ namespace GridMaster
             var lines = new List<string>();
             var start = 0;
 
-            if (ch >= '0' && ch <= '9' || ch ==':')
+            if (ch >= '0' && ch <= '9' || ch == ':')
             {
                 start = (int)ch - (int)'0';
 
                 start = start * 8;
-                if(ch== ':')
+                if (ch == ':')
                     start = Digits.Length - 8;
 
                 for (var i = start; i < start + 7; i++)
@@ -185,43 +197,52 @@ namespace GridMaster
 
                         for (int j = 0; j < NumberOfCols; j++)
                         {
-                            var pixel = Screen[i][j + Frame];
-                            var filename = file.ToString();
-                            if (file < 10)
-                                filename = "000" + file;
-                            else if (file < 100)
-                                filename = "00" + file;
-                            else filename = "0" + file;
-
-
-                            var white = Path.Combine(path, filename) + "." + WhiteIconExt;
-                            var black = Path.Combine(path, filename) + "." + BlackIconExt;
-
-
-                            if (pixel == ' ' || pixel == '@')
+                            try
                             {
-                                if (File.Exists(white) == false)
-                                {
-                                    File.Copy(".\\0.txt", white, true);
-                                    File.Delete(black);
 
+                                var pixel = Screen[i][j + Frame];
+                                var filename = file.ToString();
+                                if (file < 10)
+                                    filename = "000" + file;
+                                else if (file < 100)
+                                    filename = "00" + file;
+                                else filename = "0" + file;
+
+
+                                var white = Path.Combine(path, filename) + "." + WhiteIconExt;
+                                var black = Path.Combine(path, filename) + "." + BlackIconExt;
+
+
+                                if (pixel == ' ' || pixel == '@')
+                                {
+                                    if (File.Exists(white) == false)
+                                    {
+                                        File.Copy(".\\0.txt", white, true);
+                                        File.Delete(black);
+
+                                    }
                                 }
+                                else
+                                {
+                                    if (File.Exists(black) == false)
+                                    {
+                                        File.Copy(".\\1.jpg", black, true);
+                                        File.Delete(white);
+
+                                    }
+                                }
+
+
+
+                                Thread.Sleep(2);
+                                file++;
+
                             }
-                            else
+                            catch (System.IndexOutOfRangeException)
                             {
-                                if (File.Exists(black) == false)
-                                {
-                                    File.Copy(".\\1.jpg", black, true);
-                                    File.Delete(white);
 
-                                }
+                             
                             }
-
-
-
-                            Thread.Sleep(2);
-                            file++;
-
 
                         }
 
@@ -240,6 +261,8 @@ namespace GridMaster
             {
 
                 Frame++;
+                if (Frame >= Screen[0].Length - 1)
+                    Frame = 0;
                 return;
             }
 
