@@ -65,12 +65,16 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnClock = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolLog = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -81,6 +85,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtText
@@ -116,7 +121,7 @@
             this.groupBox2.Controls.Add(this.numCols);
             this.groupBox2.Location = new System.Drawing.Point(474, 181);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 89);
+            this.groupBox2.Size = new System.Drawing.Size(290, 97);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Windows Explorer Icon Resolution";
@@ -124,7 +129,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(232, 55);
+            this.label3.Location = new System.Drawing.Point(236, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 5;
@@ -133,7 +138,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 55);
+            this.label4.Location = new System.Drawing.Point(80, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 4;
@@ -141,7 +146,7 @@
             // 
             // numRows
             // 
-            this.numRows.Location = new System.Drawing.Point(178, 51);
+            this.numRows.Location = new System.Drawing.Point(182, 57);
             this.numRows.Name = "numRows";
             this.numRows.Size = new System.Drawing.Size(54, 23);
             this.numRows.TabIndex = 3;
@@ -155,7 +160,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 30);
+            this.label2.Location = new System.Drawing.Point(236, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 15);
             this.label2.TabIndex = 2;
@@ -164,7 +169,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 30);
+            this.label1.Location = new System.Drawing.Point(59, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 1;
@@ -172,7 +177,7 @@
             // 
             // numCols
             // 
-            this.numCols.Location = new System.Drawing.Point(178, 26);
+            this.numCols.Location = new System.Drawing.Point(182, 32);
             this.numCols.Name = "numCols";
             this.numCols.Size = new System.Drawing.Size(54, 23);
             this.numCols.TabIndex = 0;
@@ -303,7 +308,7 @@
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.txtWhiteExt);
             this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Location = new System.Drawing.Point(14, 350);
+            this.groupBox5.Location = new System.Drawing.Point(14, 352);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(453, 113);
             this.groupBox5.TabIndex = 7;
@@ -322,11 +327,10 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(214, 81);
+            this.button2.Location = new System.Drawing.Point(213, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(228, 25);
+            this.button2.Size = new System.Drawing.Size(228, 28);
             this.button2.TabIndex = 2;
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = false;
@@ -334,12 +338,14 @@
             // 
             // txtBlue
             // 
+            this.txtBlue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBlue.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBlue.Location = new System.Drawing.Point(365, 38);
             this.txtBlue.Name = "txtBlue";
             this.txtBlue.Size = new System.Drawing.Size(72, 33);
             this.txtBlue.TabIndex = 9;
             this.txtBlue.Text = "all";
+            this.txtBlue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBlue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBlue_KeyUp);
             // 
             // label7
@@ -362,22 +368,26 @@
             // 
             // txtGreen
             // 
+            this.txtGreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGreen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtGreen.Location = new System.Drawing.Point(278, 38);
             this.txtGreen.Name = "txtGreen";
             this.txtGreen.Size = new System.Drawing.Size(72, 33);
             this.txtGreen.TabIndex = 5;
             this.txtGreen.Text = "xlsx";
+            this.txtGreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGreen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtGreen_KeyUp);
             // 
             // txtRed
             // 
+            this.txtRed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRed.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtRed.Location = new System.Drawing.Point(191, 38);
             this.txtRed.Name = "txtRed";
             this.txtRed.Size = new System.Drawing.Size(72, 33);
             this.txtRed.TabIndex = 6;
             this.txtRed.Text = "pdf";
+            this.txtRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRed.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtRed_KeyUp);
             // 
             // label6
@@ -400,29 +410,33 @@
             // 
             // txtWhiteExt
             // 
+            this.txtWhiteExt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWhiteExt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtWhiteExt.Location = new System.Drawing.Point(104, 39);
             this.txtWhiteExt.Name = "txtWhiteExt";
             this.txtWhiteExt.Size = new System.Drawing.Size(72, 33);
             this.txtWhiteExt.TabIndex = 2;
             this.txtWhiteExt.Text = "txt";
+            this.txtWhiteExt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtWhiteExt.Click += new System.EventHandler(this.txtWhiteExt_Click);
             this.txtWhiteExt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtWhiteExt_KeyUp);
             // 
             // textBox1
             // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(17, 38);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(72, 33);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "jpg";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(17, 17);
+            this.btnMin.Location = new System.Drawing.Point(17, 19);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(114, 29);
             this.btnMin.TabIndex = 3;
@@ -438,7 +452,7 @@
             this.groupBox8.Controls.Add(this.txtPreview);
             this.groupBox8.Location = new System.Drawing.Point(12, 89);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(456, 198);
+            this.groupBox8.Size = new System.Drawing.Size(456, 192);
             this.groupBox8.TabIndex = 8;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Preview";
@@ -447,22 +461,22 @@
             // 
             this.txtPreview.BackColor = System.Drawing.Color.Black;
             this.txtPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPreview.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPreview.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPreview.ForeColor = System.Drawing.Color.Lime;
             this.txtPreview.Location = new System.Drawing.Point(3, 19);
             this.txtPreview.Multiline = true;
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.ReadOnly = true;
             this.txtPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtPreview.Size = new System.Drawing.Size(450, 176);
+            this.txtPreview.Size = new System.Drawing.Size(450, 170);
             this.txtPreview.TabIndex = 0;
-            this.txtPreview.Text = "press [enter] to generate icons";
+            this.txtPreview.Text = "$";
             this.txtPreview.WordWrap = false;
             // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox9.Controls.Add(this.button6);
+            this.groupBox9.Controls.Add(this.btnSave);
             this.groupBox9.Controls.Add(this.button5);
             this.groupBox9.Controls.Add(this.button4);
             this.groupBox9.Location = new System.Drawing.Point(473, 383);
@@ -472,14 +486,15 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Designer";
             // 
-            // button6
+            // btnSave
             // 
-            this.button6.Location = new System.Drawing.Point(148, 16);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(135, 29);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "💿 Save Drawing";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnSave.Location = new System.Drawing.Point(148, 16);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(135, 29);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "💿 Save to a file ";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button5
             // 
@@ -498,21 +513,26 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(136, 29);
             this.button4.TabIndex = 3;
-            this.button4.Text = "📂Open Drawing";
+            this.button4.Text = "📂 Open file ...";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnClock
             // 
+            this.btnClock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClock.Location = new System.Drawing.Point(298, 19);
             this.btnClock.Name = "btnClock";
             this.btnClock.Size = new System.Drawing.Size(139, 29);
             this.btnClock.TabIndex = 10;
-            this.btnClock.Text = "⌚ DIGITAL CLOCK ";
+            this.btnClock.Text = "⌚ Digital Clock";
             this.btnClock.UseVisualStyleBackColor = false;
             this.btnClock.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox10
             // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox10.Controls.Add(this.btnMin);
             this.groupBox10.Controls.Add(this.button3);
             this.groupBox10.Controls.Add(this.btnClock);
@@ -522,9 +542,12 @@
             this.groupBox10.TabIndex = 11;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Special";
+            this.groupBox10.Enter += new System.EventHandler(this.groupBox10_Enter);
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(153, 19);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 29);
@@ -532,11 +555,43 @@
             this.button3.Text = "🎮 Games";
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolLog});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 478);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(774, 22);
+            this.statusStrip1.TabIndex = 12;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(242, 17);
+            this.toolStripStatusLabel1.Text = "Windows Explorer Icon Display by PEYMANx";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
+            this.toolStripStatusLabel2.Text = "|";
+            // 
+            // toolLog
+            // 
+            this.toolLog.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolLog.Name = "toolLog";
+            this.toolLog.Size = new System.Drawing.Size(213, 17);
+            this.toolLog.Text = "Try to type something and press [Enter]";
+            // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 469);
+            this.ClientSize = new System.Drawing.Size(774, 500);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox1);
@@ -548,7 +603,6 @@
             this.KeyPreview = true;
             this.Name = "MainFRM";
             this.Opacity = 0.95D;
-            this.Text = "PEYMANx Grid Master";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MainFRM_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainFRM_KeyUp);
@@ -567,7 +621,10 @@
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -603,7 +660,7 @@
         private GroupBox groupBox9;
         private Button button5;
         private Button button4;
-        private Button button6;
+        private Button btnSave;
         private Button btnClock;
         private GroupBox groupBox10;
         private Button button3;
@@ -615,5 +672,9 @@
         private TextBox txtRed;
         private Label label6;
         private Label label5;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel toolStripStatusLabel2;
+        private ToolStripStatusLabel toolLog;
     }
 }

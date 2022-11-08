@@ -105,7 +105,7 @@ namespace GridMaster
 
 
                 Generator.Screen = Generator.Word(time);
-                txtText.Text = time;
+                txtText.Text = $"@Time({time})";
                 txtPreview.Text = Generator.PreviewFrame();
                 Generator.Icons(Path);
             }
@@ -179,7 +179,7 @@ namespace GridMaster
             txtPreview.Text = Generator.PreviewFrame();
         }
 
-      
+
 
         private void txtWhiteExt_KeyUp(object sender, KeyEventArgs e)
         {
@@ -190,7 +190,7 @@ namespace GridMaster
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-          //  radioCBlack.Checked = true;
+            //  radioCBlack.Checked = true;
         }
 
         private void txtWhiteExt_Click(object sender, EventArgs e)
@@ -201,7 +201,7 @@ namespace GridMaster
         private void btnMin_Click(object sender, EventArgs e)
         {
             this.Width = 520;
-            this.Height = 110;
+            this.Height = 120;
             txtText.Focus();
         }
 
@@ -220,7 +220,7 @@ namespace GridMaster
         bool clock_enabled = false;
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Generator.Frame = 0;
             clock_enabled = !clock_enabled;
             timer1.Enabled = clock_enabled;
 
@@ -259,6 +259,50 @@ namespace GridMaster
             Generator.BlueIconExt = txtBlue.Text;
             if (e.KeyCode == Keys.Enter)
                 apply(sender, e);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var file = "";
+            foreach (var line in Generator.Screen)
+            {
+                file += line + Environment.NewLine;
+            }
+            var save = new SaveFileDialog
+            {
+                Filter = "text file|*.txt"
+            };
+            file = file.Replace("@", " " );
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName, file);
+               toolLog.Text= $"Data saved to the file ({save.FileName})";
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var open = new OpenFileDialog
+            {
+                Filter = "text file|*.txt"
+            };
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                var file = File.ReadAllText(open.FileName);
+                Generator.Screen = file.Split(Environment.NewLine).ToList();
+                Generator.Frame = 0;
+
+                txtPreview.Text = Generator.Preview();
+                txtText.Text = "@" + open.FileName;
+                toolLog.Text = "File opened successfully";
+            }
+        }
+
+        private void groupBox10_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
