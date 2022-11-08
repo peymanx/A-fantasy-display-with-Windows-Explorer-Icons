@@ -16,6 +16,9 @@ namespace GridMaster
 
         private void txtText_KeyUp(object sender, KeyEventArgs e)
         {
+            clock_enabled = false;
+            timer1.Enabled = false;
+
             txtPreview.Text = Generator.Preview(txtText.Text);
             btnPause_Click(sender, e);
             if (e.KeyCode == Keys.Enter)
@@ -84,21 +87,40 @@ namespace GridMaster
         {
             timer1.Enabled = false;
             btnPause.BackColor = Color.Khaki;
-            btnPlay.BackColor = btnNext.BackColor;
+            btnClock.BackColor = btnPlay.BackColor = btnNext.BackColor;
+            clock_enabled = false;
+
 
         }
         int flasher = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             flasher++;
-            if (flasher % 2 == 0)
-                btnPlay.BackColor = Color.Khaki;
+            if (clock_enabled)
+            {
+                var time = DateTime.Now.ToString("hh:mm");
+                if (flasher % 4 == 0)
+                    time = DateTime.Now.ToString("hh mm");
+
+
+                Generator.Screen = Generator.Word(time);
+                txtText.Text = time;
+                txtPreview.Text = Generator.PreviewFrame();
+                Generator.Icons(Path);
+            }
             else
-                btnPlay.BackColor = Color.Red;
+            {
 
-            btnPause.BackColor = btnNext.BackColor;
+                if (flasher % 2 == 0)
+                    btnPlay.BackColor = Color.Khaki;
+                else
+                    btnPlay.BackColor = Color.Red;
 
-            btnNext_Click(null, null);
+                btnPause.BackColor = btnNext.BackColor;
+
+                btnNext_Click(null, null);
+            }
 
         }
 
@@ -193,13 +215,35 @@ namespace GridMaster
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-
+            btnPause_Click(null, null);
 
             new DesignerFRM(Generator, Path).ShowDialog();
             this.Show();
 
             apply(sender, e);
 
+
+        }
+        bool clock_enabled = false;
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            clock_enabled = !clock_enabled;
+            timer1.Enabled = clock_enabled;
+
+
+            if (clock_enabled)
+            {
+                btnClock.BackColor = Color.Cyan;
+                timer1_Tick(null, null);
+            }
+            else
+                btnPause_Click(null, null);
+
+        }
+
+        private void txtText_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

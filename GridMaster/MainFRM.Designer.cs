@@ -63,9 +63,11 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnClock = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,6 +80,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtText
@@ -88,6 +91,7 @@
             this.txtText.Name = "txtText";
             this.txtText.Size = new System.Drawing.Size(768, 50);
             this.txtText.TabIndex = 0;
+            this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
             this.txtText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtText_KeyUp);
             // 
             // groupBox1
@@ -421,7 +425,7 @@
             this.groupBox8.Controls.Add(this.txtPreview);
             this.groupBox8.Location = new System.Drawing.Point(12, 89);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(456, 268);
+            this.groupBox8.Size = new System.Drawing.Size(456, 204);
             this.groupBox8.TabIndex = 8;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Preview";
@@ -437,7 +441,7 @@
             this.txtPreview.Name = "txtPreview";
             this.txtPreview.ReadOnly = true;
             this.txtPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtPreview.Size = new System.Drawing.Size(450, 246);
+            this.txtPreview.Size = new System.Drawing.Size(450, 182);
             this.txtPreview.TabIndex = 0;
             this.txtPreview.Text = "$";
             this.txtPreview.WordWrap = false;
@@ -454,6 +458,15 @@
             this.groupBox9.TabIndex = 9;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Designer";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(148, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(135, 29);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "💿 Save Drawing";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -475,23 +488,34 @@
             this.button4.Text = "📂Open Drawing";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // btnClock
             // 
-            this.button6.Location = new System.Drawing.Point(148, 16);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(135, 29);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "💿 Save Drawing";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnClock.Location = new System.Drawing.Point(288, 20);
+            this.btnClock.Name = "btnClock";
+            this.btnClock.Size = new System.Drawing.Size(147, 29);
+            this.btnClock.TabIndex = 10;
+            this.btnClock.Text = "⌚ DIGITAL CLOCK ";
+            this.btnClock.UseVisualStyleBackColor = false;
+            this.btnClock.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.button3);
+            this.groupBox10.Controls.Add(this.btnClock);
+            this.groupBox10.Location = new System.Drawing.Point(14, 299);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(451, 61);
+            this.groupBox10.TabIndex = 11;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Special";
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button3.Location = new System.Drawing.Point(480, 378);
+            this.button3.Location = new System.Drawing.Point(135, 20);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(278, 29);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "⌚ DIGITAL CLOCK ";
+            this.button3.Size = new System.Drawing.Size(147, 29);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "🎮 Games";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // MainFRM
@@ -499,7 +523,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 500);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox8);
@@ -531,6 +555,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -574,6 +599,8 @@
         private Button button5;
         private Button button4;
         private Button button6;
+        private Button btnClock;
+        private GroupBox groupBox10;
         private Button button3;
     }
 }
