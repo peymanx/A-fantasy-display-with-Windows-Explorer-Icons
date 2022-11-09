@@ -36,10 +36,7 @@ namespace GridMaster
 
             }
         }
-        public void DeleteAllFiles()
-        {
-            Directory.GetFiles(Path).ToList().ForEach(File.Delete);
-        }
+
         private void btnOpenFolder_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", Path);
@@ -49,7 +46,7 @@ namespace GridMaster
         private void MainFRM_Load(object sender, EventArgs e)
         {
             txtPath.Text = Path;
-            DeleteAllFiles();
+
 
 
         }
@@ -105,7 +102,7 @@ namespace GridMaster
             if (clock_enabled)
             {
                 var time = DateTime.Now.ToString("hh:mm");
-                if (flasher % 4 == 0)
+                if (flasher % 2 == 0)
                     time = DateTime.Now.ToString("hh mm");
 
 
@@ -147,7 +144,11 @@ namespace GridMaster
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var open = new FolderBrowserDialog();
+            var open = new FolderBrowserDialog()
+            {
+                ShowNewFolderButton = true
+
+            };
             if (open.ShowDialog() == DialogResult.OK)
             {
                 Path = open.SelectedPath;
@@ -232,12 +233,16 @@ namespace GridMaster
 
             if (clock_enabled)
             {
-                DeleteAllFiles();
+            
+                timer1.Interval = 500;
                 btnClock.BackColor = Color.Cyan;
                 timer1_Tick(null, null);
             }
             else
+            {
+                timer1.Interval = 2000;
                 btnPause_Click(null, null);
+            }
 
         }
 
@@ -286,7 +291,7 @@ namespace GridMaster
 
             }
         }
-       
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -305,7 +310,7 @@ namespace GridMaster
                 var result = new List<string>();
                 foreach (var line in lines)
                 {
-                    var item= line;
+                    var item = line;
                     if (line.Length < max)
                         item += Generator.Space(max - line.Length);
 
@@ -314,14 +319,14 @@ namespace GridMaster
                 }
 
 
-                if(result.Count< Generator.NumberOfRows)
+                if (result.Count < Generator.NumberOfRows)
                 {
-          
-                    for (int i = 0; i <= Generator.NumberOfRows- result.Count; i++)
+
+                    for (int i = 0; i <= Generator.NumberOfRows - result.Count; i++)
                     {
                         result.Add(Generator.Space(max));
                     }
-                    
+
                 }
 
 
@@ -337,6 +342,14 @@ namespace GridMaster
         private void groupBox10_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            txtText.Text = "   ";
+            apply( sender,  e);
+            txtText.SelectAll();
+            txtText.Focus();
         }
     }
 }

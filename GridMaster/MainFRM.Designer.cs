@@ -32,12 +32,12 @@
             this.txtText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numRows = new System.Windows.Forms.NumericUpDown();
+            this.numCols = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.numRows = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numCols = new System.Windows.Forms.NumericUpDown();
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -75,6 +75,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolLog = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -113,18 +114,44 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.numRows);
+            this.groupBox2.Controls.Add(this.numCols);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.numRows);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.numCols);
             this.groupBox2.Location = new System.Drawing.Point(474, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(290, 97);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Windows Explorer Icon Resolution";
+            // 
+            // numRows
+            // 
+            this.numRows.Location = new System.Drawing.Point(182, 57);
+            this.numRows.Name = "numRows";
+            this.numRows.Size = new System.Drawing.Size(54, 23);
+            this.numRows.TabIndex = 3;
+            this.numRows.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numRows.ValueChanged += new System.EventHandler(this.numRows_ValueChanged);
+            // 
+            // numCols
+            // 
+            this.numCols.Location = new System.Drawing.Point(182, 32);
+            this.numCols.Name = "numCols";
+            this.numCols.Size = new System.Drawing.Size(54, 23);
+            this.numCols.TabIndex = 0;
+            this.numCols.Value = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+            this.numCols.ValueChanged += new System.EventHandler(this.numCols_ValueChanged);
             // 
             // label3
             // 
@@ -144,19 +171,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Number of rows:";
             // 
-            // numRows
-            // 
-            this.numRows.Location = new System.Drawing.Point(182, 57);
-            this.numRows.Name = "numRows";
-            this.numRows.Size = new System.Drawing.Size(54, 23);
-            this.numRows.TabIndex = 3;
-            this.numRows.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.numRows.ValueChanged += new System.EventHandler(this.numRows_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -174,19 +188,6 @@
             this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Number of columns:";
-            // 
-            // numCols
-            // 
-            this.numCols.Location = new System.Drawing.Point(182, 32);
-            this.numCols.Name = "numCols";
-            this.numCols.Size = new System.Drawing.Size(54, 23);
-            this.numCols.TabIndex = 0;
-            this.numCols.Value = new decimal(new int[] {
-            22,
-            0,
-            0,
-            0});
-            this.numCols.ValueChanged += new System.EventHandler(this.numCols_ValueChanged);
             // 
             // btnOpenFolder
             // 
@@ -259,7 +260,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 2200;
+            this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1
@@ -297,6 +298,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.button6);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Controls.Add(this.txtBlue);
@@ -326,11 +328,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
+            this.button2.BackColor = System.Drawing.Color.LightGray;
             this.button2.Location = new System.Drawing.Point(213, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(228, 28);
+            this.button2.Size = new System.Drawing.Size(224, 28);
             this.button2.TabIndex = 2;
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = false;
@@ -583,6 +585,17 @@
             this.toolLog.Size = new System.Drawing.Size(213, 17);
             this.toolLog.Text = "Try to type something and press [Enter]";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(17, 77);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(190, 28);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Clean";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -673,5 +686,6 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolLog;
+        private Button button6;
     }
 }
