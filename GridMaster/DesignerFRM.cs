@@ -16,7 +16,7 @@ namespace GridMaster
         {
             Y = i;
             X = j;
- 
+
 
         }
         public int X { get; set; }
@@ -53,7 +53,7 @@ namespace GridMaster
                         var pixel = Generator.Screen[i][j].ToString();
                         var btn = new Button
                         {
-                            Text = i + "," + j,
+                            Text = i * Generator.NumberOfCols + j + 1 + "",
                             BackColor = Color.White,
                             Width = pixel_size,
                             Height = pixel_size,
@@ -62,14 +62,27 @@ namespace GridMaster
 
 
                         };
-                        if (pixel != " " && pixel != "@")
+                        if (pixel == " " || pixel == "@")
+                            btn.BackColor = Color.White;
+                        else if (pixel.ToUpper() == "R")
+                            btn.BackColor = Color.Red;
+                        else if (pixel.ToUpper() == "G")
+                            btn.BackColor = Color.Green;
+                        else if (pixel.ToUpper() == "B")
+                            btn.BackColor = Color.Blue;
+
+                        else
                             btn.BackColor = Color.Black;
-                        btn.Click += Btn_Click;
+
+
+                        btn.MouseUp += Btn_Click;
+
+                      
 
 
                         flowLayoutPanel1.Controls.Add(btn);
                     }
-                    catch 
+                    catch
                     {
                         // :( DONT TELL ANY ONE- NO WAY OUT
 
@@ -79,21 +92,44 @@ namespace GridMaster
 
         }
 
+        
+
         private void Btn_Click(object? sender, EventArgs e)
-        {
+        {   
             var btn = (Button)sender;
             var grid = (Grid)btn.Tag;
+            var click = (MouseEventArgs)e;
 
-            if (btn.BackColor ==  Color.White)
+            if (click.Button == MouseButtons.Left)
             {
-                btn.BackColor = Color.Black;
-                Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "X");
+
+                if (btn.BackColor == Color.White)
+                {
+                    btn.BackColor = Color.Black;
+                    Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "X");
+                }
+                else
+                {
+                    btn.BackColor = Color.White;
+                    Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, " ");
+                }
+
             }
-            else
+            if (click.Button == MouseButtons.Right)
             {
-                btn.BackColor = Color.White;
-                Generator.Screen[grid.Y]=  Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, " ");
+
+                btn.BackColor = Color.Red;
+                Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "R");
+
             }
+            if (click.Button == MouseButtons.Middle)
+            {
+
+                btn.BackColor = Color.Green;
+                Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "G");
+
+            }
+
 
             Generator.Icons(Path);
 

@@ -207,7 +207,7 @@ namespace GridMaster
                         {
                             try
                             {
-                                file = i * NumberOfCols + j +1;
+                                file = i * NumberOfCols + j + 1;
                                 var pixel = Screen[i][j + Frame];
                                 var filename = file.ToString();
                                 if (file < 10)
@@ -225,6 +225,8 @@ namespace GridMaster
                                 var g = Path.Combine(path, filename) + "." + GreenIconExt;
                                 var b = Path.Combine(path, filename) + "." + BlueIconExt;
 
+
+
                                 var exist = "";
 
 
@@ -235,33 +237,30 @@ namespace GridMaster
                                         File.Move(black, white);
                                     else
                                         File.Copy(".\\1.jpg", white, true);
+
+                                    File.Delete(r);
+                                    File.Delete(g);
+                                    File.Delete(b);
                                 }
                                 else if (pixel == 'r' || pixel == 'R')
                                 {
-                                    if (File.Exists(white) == false)
-                                    {
-                                        File.Copy(".\\0.txt", r, true);
-                                        File.Delete(black);
 
-                                    }
+                                    File.Copy(".\\1.jpg", r, true);
+                                    File.Delete(white);
+                                    File.Delete(black);
+
                                 }
                                 else if (pixel == 'g' || pixel == 'G')
                                 {
-                                    if (File.Exists(white) == false)
-                                    {
-                                        File.Copy(".\\0.txt", g, true);
-                                        File.Delete(black);
-
-                                    }
+                                    File.Copy(".\\1.jpg", g, true);
+                                    File.Delete(white);
+                                    File.Delete(black);
                                 }
                                 else if (pixel == 'b' || pixel == 'B')
                                 {
-                                    if (File.Exists(white) == false)
-                                    {
-                                        File.Copy(".\\0.txt", b, true);
-                                        File.Delete(black);
-
-                                    }
+                                    File.Copy(".\\1.jpg", b, true);
+                                    File.Delete(white);
+                                    File.Delete(black);
                                 }
 
                                 else
@@ -271,14 +270,16 @@ namespace GridMaster
                                     else
                                         File.Copy(".\\1.jpg", black, true);
 
-
+                                    File.Delete(r);
+                                    File.Delete(g);
+                                    File.Delete(b);
 
                                 }
 
 
 
                                 Thread.Sleep(2);
-                          
+
 
                             }
                             catch
