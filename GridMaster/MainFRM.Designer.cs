@@ -50,6 +50,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.txtBlue = new System.Windows.Forms.TextBox();
@@ -75,7 +76,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolLog = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRows)).BeginInit();
@@ -317,6 +317,17 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Icons Options";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(17, 77);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(190, 28);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Clean";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -553,6 +564,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "🎮 Games";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // statusStrip1
             // 
@@ -585,17 +597,6 @@
             this.toolLog.Size = new System.Drawing.Size(213, 17);
             this.toolLog.Text = "Try to type something and press [Enter]";
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(17, 77);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(190, 28);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Clean";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // MainFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -613,6 +614,7 @@
             this.KeyPreview = true;
             this.Name = "MainFRM";
             this.Opacity = 0.95D;
+            this.Text = "تبدیل ویندوز اکسپلورر به صفحه نمایش فانتزی | v1.01";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MainFRM_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainFRM_KeyUp);

@@ -351,5 +351,12 @@ namespace GridMaster
             txtText.SelectAll();
             txtText.Focus();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            new GameChooseFRM(Generator, Path).ShowDialog();
+            this.Show();
+        }
     }
 }
