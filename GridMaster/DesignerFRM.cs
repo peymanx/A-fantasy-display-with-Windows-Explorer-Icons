@@ -39,7 +39,7 @@ namespace GridMaster
 
         private void DesignerFRM_Load(object sender, EventArgs e)
         {
-            this.Height = Generator.NumberOfRows * pixel_size;
+            this.Height = Generator.NumberOfRows * pixel_size+ pixel_size;
             this.Width = Generator.NumberOfCols * pixel_size + pixel_size;
 
             for (int i = 0; i < Generator.NumberOfRows; i++)
