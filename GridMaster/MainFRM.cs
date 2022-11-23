@@ -354,6 +354,9 @@ namespace GridMaster
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            MessageBox.Show("Test", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+
             this.Hide();
             new GameChooseFRM(Generator, Path).ShowDialog();
             this.Show();
