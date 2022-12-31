@@ -48,6 +48,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnMin = new System.Windows.Forms.Button();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtWhiteExt = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnMin = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -71,6 +71,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.btnClock = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -276,6 +277,7 @@
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnMin);
             this.groupBox4.Controls.Add(this.txtPath);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.btnOpenFolder);
@@ -285,6 +287,16 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Folder Path";
+            // 
+            // btnMin
+            // 
+            this.btnMin.Location = new System.Drawing.Point(6, 51);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(114, 29);
+            this.btnMin.TabIndex = 3;
+            this.btnMin.Text = "-  Minimize";
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // txtPath
             // 
@@ -442,16 +454,6 @@
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
-            // btnMin
-            // 
-            this.btnMin.Location = new System.Drawing.Point(17, 19);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(114, 29);
-            this.btnMin.TabIndex = 3;
-            this.btnMin.Text = "-  Minimize";
-            this.btnMin.UseVisualStyleBackColor = true;
-            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
-            // 
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -543,7 +545,7 @@
             // 
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox10.Controls.Add(this.btnMin);
+            this.groupBox10.Controls.Add(this.button7);
             this.groupBox10.Controls.Add(this.button3);
             this.groupBox10.Controls.Add(this.btnClock);
             this.groupBox10.Location = new System.Drawing.Point(14, 287);
@@ -553,6 +555,18 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Special";
             this.groupBox10.Enter += new System.EventHandler(this.groupBox10_Enter);
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Location = new System.Drawing.Point(8, 20);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(139, 26);
+            this.button7.TabIndex = 12;
+            this.button7.Text = "📹 Webcam";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button3
             // 
@@ -614,7 +628,7 @@
             this.KeyPreview = true;
             this.Name = "MainFRM";
             this.Opacity = 0.95D;
-            this.Text = "تبدیل ویندوز اکسپلورر به صفحه نمایش فانتزی | v1.01";
+            this.Text = "تبدیل ویندوز اکسپلورر به صفحه نمایش فانتزی | v2.0001";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MainFRM_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainFRM_KeyUp);
@@ -689,5 +703,6 @@
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolLog;
         private Button button6;
+        private Button button7;
     }
 }

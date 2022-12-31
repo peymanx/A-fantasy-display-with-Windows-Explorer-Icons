@@ -16,6 +16,8 @@ namespace GridMaster
         string Path;
         public GameChooseFRM(Generator generator, string path)
         {
+            StartPosition = FormStartPosition.Manual;
+            Location = new Point(1400,650);
             InitializeComponent();
             Generator = generator;
             Generator.Boom = true;

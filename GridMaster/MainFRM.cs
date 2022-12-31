@@ -302,41 +302,46 @@ namespace GridMaster
 
             if (open.ShowDialog() == DialogResult.OK)
             {
-                var file = File.ReadAllText(open.FileName);
-                var lines = file.Split(Environment.NewLine).ToList();
-                var max = lines.Max().Length;
-                if (max < Generator.NumberOfCols)
-                    max = Generator.NumberOfCols;
-                var result = new List<string>();
-                foreach (var line in lines)
-                {
-                    var item = line;
-                    if (line.Length < max)
-                        item += Generator.Space(max - line.Length);
-
-                    result.Add(item);
-
-                }
-
-
-                if (result.Count < Generator.NumberOfRows)
-                {
-
-                    for (int i = 0; i <= Generator.NumberOfRows - result.Count; i++)
-                    {
-                        result.Add(Generator.Space(max));
-                    }
-
-                }
-
-
-                Generator.Screen = result;
-                Generator.Frame = 0;
+                OpenTXTFile(open.FileName);
 
                 apply(sender, e);
                 txtText.Text = "@" + open.FileName;
                 toolLog.Text = "File opened successfully";
             }
+        }
+
+        private void OpenTXTFile(string path)
+        {
+            var file = File.ReadAllText(path);
+            var lines = file.Split(Environment.NewLine).ToList();
+            var max = lines.Max().Length;
+            if (max < Generator.NumberOfCols)
+                max = Generator.NumberOfCols;
+            var result = new List<string>();
+            foreach (var line in lines)
+            {
+                var item = line;
+                if (line.Length < max)
+                    item += Generator.Space(max - line.Length);
+
+                result.Add(item);
+
+            }
+
+
+            if (result.Count < Generator.NumberOfRows)
+            {
+
+                for (int i = 0; i <= Generator.NumberOfRows - result.Count; i++)
+                {
+                    result.Add(Generator.Space(max));
+                }
+
+            }
+
+
+            Generator.Screen = result;
+            Generator.Frame = 0;
         }
 
         private void groupBox10_Enter(object sender, EventArgs e)
@@ -354,12 +359,19 @@ namespace GridMaster
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Test", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-
+            OpenTXTFile(@"D:\GridMaster\GridMaster\GridMaster\bin\Debug\net6.0-windows\imports\joystick.txt");
+            apply(sender, e);
             this.Hide();
             new GameChooseFRM(Generator, Path).ShowDialog();
             this.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.TopMost = false;
+            new WebcamFRM().Show();
+         
+
         }
     }
 }
