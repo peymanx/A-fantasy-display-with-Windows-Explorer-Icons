@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameControlFRM));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,13 +36,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-220, -208);
+            this.pictureBox1.Location = new System.Drawing.Point(-217, -206);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(812, 432);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -100,6 +102,12 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Sound";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // GameControlFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -112,10 +120,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "GameControlFRM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "                               از کلید های جهتی برای کنترل بازی استفاده کنید";
             this.TopMost = true;
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameControlFRM_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,5 +140,6 @@
         private Button button3;
         private Button button1;
         private Label label3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

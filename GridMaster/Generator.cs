@@ -73,6 +73,27 @@ namespace GridMaster
         }
 
 
+        public void Copy(List<string> shape, int x, int y)
+        {
+            for (int i = 0; i < shape.Count; i++)
+            {
+                var line = shape[i];
+                for (int j = 0; j < line.Length; j++)
+                {
+
+                    Pixel(x+j, y+i, line[j].ToString());
+                }
+            }
+
+           
+        }
+
+        public void Pixel(int x, int y, string ch)
+        {
+       
+            Screen[y] = Screen[y].Remove(x, 1).Insert(x, ch);
+        }
+
         internal string PreviewFrame()
         {
             if (Screen == null || Screen.Count < 1)

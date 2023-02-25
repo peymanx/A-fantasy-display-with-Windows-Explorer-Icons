@@ -359,10 +359,12 @@ namespace GridMaster
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            OpenTXTFile(@"D:\GridMaster\GridMaster\GridMaster\bin\Debug\net6.0-windows\imports\joystick.txt");
+            //  OpenTXTFile(@"D:\GridMaster\GridMaster\GridMaster\bin\Debug\net6.0-windows\imports\joystick.txt");
+
+            txtText.Text = " ";
             apply(sender, e);
             this.Hide();
-            new GameChooseFRM(Generator, Path).ShowDialog();
+            new GameControlFRM(Generator, Path).ShowDialog();
             this.Show();
         }
 
