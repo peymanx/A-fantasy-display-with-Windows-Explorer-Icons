@@ -49,6 +49,7 @@ namespace GridMaster
         private void HandDrawing_Load(object sender, EventArgs e)
         {
             txtPath.Text = Path;
+            this.TopMost = true;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -88,8 +89,7 @@ namespace GridMaster
         private void btnPause_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-          //  btnPause.BackColor = Color.Khaki;
-           // btnClock.BackColor = btnPlay.BackColor = btnNext.BackColor;
+            btnPlay.Image = Properties.Resources.btnPlay;
             clock_enabled = false;
         }
 
@@ -157,12 +157,13 @@ namespace GridMaster
             else
             {
 
-                //if (flasher % 2 == 0)
-                //    btnPlay.BackColor = Color.Khaki;
-                //else
-                //    btnPlay.BackColor = Color.Red;
+                if (flasher % 2 == 0)
+                    btnPlay.Image = Properties.Resources.btnPlay;
 
-               // btnPause.BackColor = btnNext.BackColor;
+                else
+                    btnPlay.Image = Properties.Resources.btnPlay_highlight;
+
+                // btnPause.BackColor = btnNext.BackColor;
 
                 btnNext_Click(null, null);
             }
@@ -213,9 +214,260 @@ namespace GridMaster
 
         private void textBox3_KeyUp(object sender, KeyEventArgs e)
         {
-            //radioCBlack_CheckedChanged(sender, e);
+            Generator.RedIconExt = txtBlack.Text;
             if (e.KeyCode == Keys.Enter)
                 apply(sender, e);
+        }
+
+        private void btnUpdate_MouseHover(object sender, EventArgs e)
+        {
+            btnUpdate.Image = Properties.Resources.update_highlight1;
+        }
+
+        private void HandDrawing_MouseHover(object sender, EventArgs e)
+        {
+            btnUpdate.Image = Properties.Resources.update_normal;
+           
+
+        }
+
+        private void pictureBox4_MouseHover(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtPath_MouseHover(object sender, EventArgs e)
+        {
+            btnUpdate.Image = Properties.Resources.update_normal;
+
+        }
+
+        private void btnUpdate_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnUpdate.Image = Properties.Resources.update_highlight1;
+
+        }
+
+        private void btnUpdate_MouseLeave(object sender, EventArgs e)
+        {
+            btnUpdate.Image = Properties.Resources.update_normal;
+
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1_Tick(sender, e);
+        }
+
+        private void btnPre_Click(object sender, EventArgs e)
+        {
+            Generator.Next(Directions.RIGHT2LEFT);
+            txtPreview.Text = Generator.PreviewFrame();
+            Generator.Icons(Path);
+        }
+
+        private void خروجToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void پاکسازیToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtText.Text = "   ";
+            apply(sender, e);
+            txtText.SelectAll();
+            txtText.Focus();
+        }
+
+        private void OpenTXTFile(string path)
+        {
+            var file = File.ReadAllText(path);
+            var lines = file.Split(Environment.NewLine).ToList();
+            var max = lines.Max().Length;
+            if (max < Generator.NumberOfCols)
+                max = Generator.NumberOfCols;
+            var result = new List<string>();
+            foreach (var line in lines)
+            {
+                var item = line;
+                if (line.Length < max)
+                    item += Generator.Space(max - line.Length);
+
+                result.Add(item);
+
+            }
+
+
+            if (result.Count < Generator.NumberOfRows)
+            {
+
+                for (int i = 0; i <= Generator.NumberOfRows - result.Count; i++)
+                {
+                    result.Add(Generator.Space(max));
+                }
+
+            }
+
+
+            Generator.Screen = result;
+            Generator.Frame = 0;
+        }
+        private void بازکردنفایلToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var open = new OpenFileDialog
+            {
+                Filter = "text file|*.txt"
+            };
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                OpenTXTFile(open.FileName);
+
+                apply(sender, e);
+                txtText.Text = "@" + open.FileName;
+                //toolLog.Text = "File opened successfully";
+            }
+        }
+
+        private void اتصالبهوبکمToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.TopMost = false;
+            new WebcamFRM().Show();
+        }
+
+        private void txtWhiteExt_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.WhiteIconExt = txtWhiteExt.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void txtGreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.GreenIconExt = txtGreen.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void txtRed_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.RedIconExt = txtRed.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void txtBlue_KeyUp(object sender, KeyEventArgs e)
+        {
+            Generator.BlueIconExt = txtBlue.Text;
+            if (e.KeyCode == Keys.Enter)
+                apply(sender, e);
+        }
+
+        private void btnPlay_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnPlay.Image = Properties.Resources.btnPlay_hover;
+        }
+
+        private void btnPlay_MouseLeave(object sender, EventArgs e)
+        {
+            btnPlay.Image = Properties.Resources.btnPlay;
+        }
+
+        private void btnClock_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnClock.Image = Properties.Resources.btnClock_hover;
+        }
+
+        private void btnClock_MouseLeave(object sender, EventArgs e)
+        {
+            btnClock.Image = Properties.Resources.btnClock;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.btnClose_hover;
+
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.btnClose;
+
+        }
+
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox3.Image = Properties.Resources.btnPaint_hover;
+
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox3.Image = Properties.Resources.btnPaint;
+
+        }
+
+        private void کوچولوشوToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnMin.Checked = !btnMin.Checked;
+            lblNim.Visible = btnMin.Checked;
+
+            if (btnMin.Checked)
+            {
+                this.BackgroundImage = Properties.Resources.bg_splited2;
+                btnPlay.Visible = false;
+            }
+            else
+            {
+                this.BackgroundImage = Properties.Resources.bg1;
+                btnPlay.Visible = true;
+
+
+            }
+        }
+
+        private void باقیماندنرویصفحهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            باقیماندنرویصفحهToolStripMenuItem.Checked = !باقیماندنرویصفحهToolStripMenuItem.Checked;
+            this.TopMost = باقیماندنرویصفحهToolStripMenuItem.Checked;
+        }
+
+        private void بازیهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtText.Text = " ";
+            apply(sender, e);
+            this.Hide();
+            new GameControlFRM(Generator, Path).ShowDialog();
+            this.Show();
+        }
+
+        private void ساعتدیجیتالToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Generator.Frame = 0;
+            clock_enabled = !clock_enabled;
+            timer1.Enabled = clock_enabled;
+
+
+            if (clock_enabled)
+            {
+
+                timer1.Interval = 500;
+                btnClock.BackColor = Color.Cyan;
+                timer1_Tick(null, null);
+            }
+            else
+            {
+                timer1.Interval = 2000;
+                btnPause_Click(null, null);
+            }
+        }
+
+        private void نسخهمدرنToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            new MainFRM().Show();
+           
         }
     }
 }

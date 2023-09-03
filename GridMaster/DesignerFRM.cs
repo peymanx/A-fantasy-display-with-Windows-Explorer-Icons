@@ -31,6 +31,7 @@ namespace GridMaster
         const int pixel_size = 40;
         public DesignerFRM(Generator generator, string path)
         {
+           
             InitializeComponent();
             Generator = generator;
             Generator.Boom = true;
@@ -39,6 +40,7 @@ namespace GridMaster
 
         private void DesignerFRM_Load(object sender, EventArgs e)
         {
+            Text = "ترسیم نقاشی روی آیکون ها";
             this.Height = Generator.NumberOfRows * pixel_size+ pixel_size;
             this.Width = Generator.NumberOfCols * pixel_size + pixel_size;
 
