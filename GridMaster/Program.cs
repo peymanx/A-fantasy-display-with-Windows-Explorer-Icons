@@ -14,7 +14,7 @@ namespace GridMaster
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new WebcamFRM());
-            Application.Run(new MainFRM());
+            Application.Run(new HandDrawing());
         }
     }
 }
