@@ -59,21 +59,19 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.خروجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.نسخهمدرنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.پاکسازیToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMin = new System.Windows.Forms.ToolStripMenuItem();
             this.ساعتدیجیتالToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.بازیهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.باقیماندنرویصفحهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMin = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.سورسپروژهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.دربارهبرنامهنویسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.peymanmajidiirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPlay = new System.Windows.Forms.PictureBox();
             this.btnPre = new System.Windows.Forms.PictureBox();
             this.lblNim = new System.Windows.Forms.Label();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.نسخهمدرنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).BeginInit();
@@ -299,12 +297,17 @@
             // 
             this.btnNext.BackColor = System.Drawing.Color.Transparent;
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.Location = new System.Drawing.Point(672, 168);
+            this.btnNext.Image = global::GridMaster.Properties.Resources.btnNext;
+            this.btnNext.Location = new System.Drawing.Point(661, 158);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(44, 39);
+            this.btnNext.Size = new System.Drawing.Size(61, 65);
+            this.btnNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnNext.TabIndex = 24;
             this.btnNext.TabStop = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnNext.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnNext_MouseDown);
+            this.btnNext.MouseLeave += new System.EventHandler(this.btnNext_MouseLeave);
+            this.btnNext.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNext_MouseMove);
             // 
             // pictureBox5
             // 
@@ -390,6 +393,7 @@
             this.ذخیرهToolStripMenuItem.Name = "ذخیرهToolStripMenuItem";
             this.ذخیرهToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
             this.ذخیرهToolStripMenuItem.Text = "ذخیره";
+            this.ذخیرهToolStripMenuItem.Click += new System.EventHandler(this.ذخیرهToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -406,16 +410,23 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.نسخهمدرنToolStripMenuItem,
             this.پاکسازیToolStripMenuItem,
-            this.btnMin,
             this.ساعتدیجیتالToolStripMenuItem,
             this.بازیهاToolStripMenuItem,
             this.toolStripMenuItem4,
             this.باقیماندنرویصفحهToolStripMenuItem,
-            this.نسخهمدرنToolStripMenuItem});
+            this.btnMin});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(63, 30);
             this.editToolStripMenuItem.Text = "ابزارها";
+            // 
+            // نسخهمدرنToolStripMenuItem
+            // 
+            this.نسخهمدرنToolStripMenuItem.Name = "نسخهمدرنToolStripMenuItem";
+            this.نسخهمدرنToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+            this.نسخهمدرنToolStripMenuItem.Text = "نسخه مدرن";
+            this.نسخهمدرنToolStripMenuItem.Click += new System.EventHandler(this.نسخهمدرنToolStripMenuItem_Click);
             // 
             // پاکسازیToolStripMenuItem
             // 
@@ -423,13 +434,6 @@
             this.پاکسازیToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.پاکسازیToolStripMenuItem.Text = "پاک سازی";
             this.پاکسازیToolStripMenuItem.Click += new System.EventHandler(this.پاکسازیToolStripMenuItem_Click);
-            // 
-            // btnMin
-            // 
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(223, 34);
-            this.btnMin.Text = "کوچولو شو";
-            this.btnMin.Click += new System.EventHandler(this.کوچولوشوToolStripMenuItem_Click);
             // 
             // ساعتدیجیتالToolStripMenuItem
             // 
@@ -445,6 +449,11 @@
             this.بازیهاToolStripMenuItem.Text = "بازی ها";
             this.بازیهاToolStripMenuItem.Click += new System.EventHandler(this.بازیهاToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(220, 6);
+            // 
             // باقیماندنرویصفحهToolStripMenuItem
             // 
             this.باقیماندنرویصفحهToolStripMenuItem.Checked = true;
@@ -454,13 +463,18 @@
             this.باقیماندنرویصفحهToolStripMenuItem.Text = "باقی ماندن روی صفحه";
             this.باقیماندنرویصفحهToolStripMenuItem.Click += new System.EventHandler(this.باقیماندنرویصفحهToolStripMenuItem_Click);
             // 
+            // btnMin
+            // 
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(223, 34);
+            this.btnMin.Text = "کوچولو شو";
+            this.btnMin.Click += new System.EventHandler(this.کوچولوشوToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.سورسپروژهToolStripMenuItem,
-            this.دربارهبرنامهنویسToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.peymanmajidiirToolStripMenuItem});
+            this.دربارهبرنامهنویسToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 30);
             this.helpToolStripMenuItem.Text = "کمک";
@@ -468,25 +482,15 @@
             // سورسپروژهToolStripMenuItem
             // 
             this.سورسپروژهToolStripMenuItem.Name = "سورسپروژهToolStripMenuItem";
-            this.سورسپروژهToolStripMenuItem.Size = new System.Drawing.Size(232, 34);
+            this.سورسپروژهToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
             this.سورسپروژهToolStripMenuItem.Text = "سورس پروژه";
             // 
             // دربارهبرنامهنویسToolStripMenuItem
             // 
             this.دربارهبرنامهنویسToolStripMenuItem.Name = "دربارهبرنامهنویسToolStripMenuItem";
-            this.دربارهبرنامهنویسToolStripMenuItem.Size = new System.Drawing.Size(232, 34);
+            this.دربارهبرنامهنویسToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
             this.دربارهبرنامهنویسToolStripMenuItem.Text = "درباره برنامه نویس";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(229, 6);
-            // 
-            // peymanmajidiirToolStripMenuItem
-            // 
-            this.peymanmajidiirToolStripMenuItem.Name = "peymanmajidiirToolStripMenuItem";
-            this.peymanmajidiirToolStripMenuItem.Size = new System.Drawing.Size(232, 34);
-            this.peymanmajidiirToolStripMenuItem.Text = "peymanmajidi.ir";
+            this.دربارهبرنامهنویسToolStripMenuItem.Click += new System.EventHandler(this.دربارهبرنامهنویسToolStripMenuItem_Click);
             // 
             // btnPlay
             // 
@@ -499,6 +503,7 @@
             this.btnPlay.TabIndex = 29;
             this.btnPlay.TabStop = false;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            this.btnPlay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPlay_MouseDown);
             this.btnPlay.MouseLeave += new System.EventHandler(this.btnPlay_MouseLeave);
             this.btnPlay.MouseHover += new System.EventHandler(this.pictureBox4_MouseHover);
             this.btnPlay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPlay_MouseMove);
@@ -517,23 +522,11 @@
             // lblNim
             // 
             this.lblNim.BackColor = System.Drawing.Color.Lime;
-            this.lblNim.Location = new System.Drawing.Point(12, 190);
+            this.lblNim.Location = new System.Drawing.Point(12, 195);
             this.lblNim.Name = "lblNim";
-            this.lblNim.Size = new System.Drawing.Size(765, 397);
+            this.lblNim.Size = new System.Drawing.Size(776, 376);
             this.lblNim.TabIndex = 31;
             this.lblNim.Visible = false;
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(220, 6);
-            // 
-            // نسخهمدرنToolStripMenuItem
-            // 
-            this.نسخهمدرنToolStripMenuItem.Name = "نسخهمدرنToolStripMenuItem";
-            this.نسخهمدرنToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
-            this.نسخهمدرنToolStripMenuItem.Text = "نسخه مدرن";
-            this.نسخهمدرنToolStripMenuItem.Click += new System.EventHandler(this.نسخهمدرنToolStripMenuItem_Click);
             // 
             // HandDrawing
             // 
@@ -632,8 +625,6 @@
         private ToolStripSeparator toolStripMenuItem2;
         private ToolStripMenuItem سورسپروژهToolStripMenuItem;
         private ToolStripMenuItem دربارهبرنامهنویسToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem3;
-        private ToolStripMenuItem peymanmajidiirToolStripMenuItem;
         private Label lblNim;
         private ToolStripMenuItem btnMin;
         private ToolStripMenuItem ساعتدیجیتالToolStripMenuItem;

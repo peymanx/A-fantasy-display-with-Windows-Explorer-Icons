@@ -150,7 +150,7 @@ namespace GridMaster
 
 
                 Generator.Screen = Generator.Word(time);
-                txtText.Text = $"@Time({time})";
+                txtText.Text = $"@time:: {time}";
                 txtPreview.Text = Generator.PreviewFrame();
                 Generator.Icons(Path);
             }
@@ -203,18 +203,21 @@ namespace GridMaster
         private void numCols_ValueChanged(object sender, EventArgs e)
         {
             Generator.NumberOfCols = (int)numCols.Value;
+            Generator.UpdateNewScreenSize();
             Generator.UpdateScreen(txtText.Text);
         }
 
         private void numRows_ValueChanged(object sender, EventArgs e)
         {
             Generator.NumberOfRows = (int)numRows.Value;
+            Generator.UpdateNewScreenSize();
+
             Generator.UpdateScreen(txtText.Text);
         }
 
         private void textBox3_KeyUp(object sender, KeyEventArgs e)
         {
-            Generator.RedIconExt = txtBlack.Text;
+            Generator.BlackIconExt = txtBlack.Text;
             if (e.KeyCode == Keys.Enter)
                 apply(sender, e);
         }
@@ -325,7 +328,7 @@ namespace GridMaster
                 OpenTXTFile(open.FileName);
 
                 apply(sender, e);
-                txtText.Text = "@" + open.FileName;
+                txtText.Text = $"@File::{open.SafeFileName}";
                 //toolLog.Text = "File opened successfully";
             }
         }
@@ -416,12 +419,12 @@ namespace GridMaster
             if (btnMin.Checked)
             {
                 this.BackgroundImage = Properties.Resources.bg_splited2;
-                btnPlay.Visible = false;
+                btnNext.Visible= btnPlay.Visible = false;
             }
             else
             {
                 this.BackgroundImage = Properties.Resources.bg1;
-                btnPlay.Visible = true;
+               btnNext.Visible= btnPlay.Visible = true;
 
 
             }
@@ -468,6 +471,55 @@ namespace GridMaster
             
             new MainFRM().Show();
            
+        }
+
+        private void ذخیرهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var file = "";
+            foreach (var line in Generator.Screen)
+            {
+                file += line + Environment.NewLine;
+            }
+            var save = new SaveFileDialog
+            {
+                Filter = "text file|*.txt"
+            };
+            file = file.Replace("@", " ");
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName, file);
+               // toolLog.Text = $"Data saved to the file ({save.FileName})";
+
+            }
+        }
+
+        private void btnNext_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnNext.Image = Properties.Resources.btnNext_hover1;
+
+        }
+
+        private void btnNext_MouseLeave(object sender, EventArgs e)
+        {
+            btnNext.Image = Properties.Resources.btnNext;
+
+        }
+
+        private void btnNext_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnNext.Image = Properties.Resources.btnNext;
+
+        }
+
+        private void btnPlay_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnPlay.Image = Properties.Resources.btnPlay_highlight;
+
+        }
+
+        private void دربارهبرنامهنویسToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new PeymanX().ShowDialog();
         }
     }
 }

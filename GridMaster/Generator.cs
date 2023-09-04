@@ -40,20 +40,24 @@ namespace GridMaster
             get
             {
                 var extra_space = "";
-                for (int i = 0; i < NumberOfRows; i++)
+                for (int i = 0; i < NumberOfCols; i++)
                 {
                     extra_space += " ";
                 }
                 return extra_space;
             }
         }
+        public void UpdateNewScreenSize()
+        {
+            Screen = Word(ExtraSpace); // make a BLANK screen at start up
 
+        }
 
         public Generator()
         {
             Fonts = File.ReadAllText("font.txt").Split(Environment.NewLine);
             Digits = File.ReadAllText("digits.txt").Split(Environment.NewLine);
-            Screen = Word(ExtraSpace); // make a BLANK screen at start up
+            UpdateNewScreenSize();
 
         }
 

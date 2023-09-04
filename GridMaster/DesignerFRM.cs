@@ -31,7 +31,7 @@ namespace GridMaster
         const int pixel_size = 40;
         public DesignerFRM(Generator generator, string path)
         {
-           
+
             InitializeComponent();
             Generator = generator;
             Generator.Boom = true;
@@ -41,7 +41,7 @@ namespace GridMaster
         private void DesignerFRM_Load(object sender, EventArgs e)
         {
             Text = "ترسیم نقاشی روی آیکون ها";
-            this.Height = Generator.NumberOfRows * pixel_size+ pixel_size;
+            this.Height = Generator.NumberOfRows * pixel_size + pixel_size;
             this.Width = Generator.NumberOfCols * pixel_size + pixel_size;
 
             for (int i = 0; i < Generator.NumberOfRows; i++)
@@ -49,55 +49,51 @@ namespace GridMaster
 
                 for (int j = 0; j < Generator.NumberOfCols; j++)
                 {
-                    try
+                    var pixel = " ";
+                  
+
+                        pixel = Generator.Screen[i][j].ToString();
+                   
+                    var btn = new Button
                     {
-
-                        var pixel = Generator.Screen[i][j].ToString();
-                        var btn = new Button
-                        {
-                            Text = i * Generator.NumberOfCols + j + 1 + "",
-                            BackColor = Color.White,
-                            Width = pixel_size,
-                            Height = pixel_size,
-                            Tag = new Grid(i, j),
-                            Margin = new Padding(0),
+                        Text = i * Generator.NumberOfCols + j + 1 + "",
+                        BackColor = Color.White,
+                        Width = pixel_size,
+                        Height = pixel_size,
+                        Tag = new Grid(i, j),
+                        Margin = new Padding(0),
 
 
-                        };
-                        if (pixel == " " || pixel == "@")
-                            btn.BackColor = Color.White;
-                        else if (pixel.ToUpper() == "R")
-                            btn.BackColor = Color.Red;
-                        else if (pixel.ToUpper() == "G")
-                            btn.BackColor = Color.Green;
-                        else if (pixel.ToUpper() == "B")
-                            btn.BackColor = Color.Blue;
+                    };
+                    if (pixel == " " || pixel == "@")
+                        btn.BackColor = Color.White;
+                    else if (pixel.ToUpper() == "R")
+                        btn.BackColor = Color.Red;
+                    else if (pixel.ToUpper() == "G")
+                        btn.BackColor = Color.Green;
+                    else if (pixel.ToUpper() == "B")
+                        btn.BackColor = Color.Blue;
 
-                        else
-                            btn.BackColor = Color.Black;
-
-
-                        btn.MouseUp += Btn_Click;
-
-                      
+                    else
+                        btn.BackColor = Color.Black;
 
 
-                        flowLayoutPanel1.Controls.Add(btn);
-                    }
-                    catch
-                    {
-                        // :( DONT TELL ANY ONE- NO WAY OUT
+                    btn.MouseUp += Btn_Click;
 
-                    }
+
+
+
+                    flowLayoutPanel1.Controls.Add(btn);
+
                 }
             }
 
         }
 
-        
+
 
         private void Btn_Click(object? sender, EventArgs e)
-        {   
+        {
             var btn = (Button)sender;
             var grid = (Grid)btn.Tag;
             var click = (MouseEventArgs)e;
