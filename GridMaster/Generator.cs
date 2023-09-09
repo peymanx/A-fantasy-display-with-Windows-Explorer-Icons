@@ -14,6 +14,7 @@ namespace GridMaster
         public string[]? Digits { get; set; }
         public int NumberOfRows { get; set; } = 9;
         public int NumberOfCols { get; set; } = 22;
+        public string IconSource { get; set; } = @".\black.jpg";
         public string BlackIconExt { get; set; } = "jpg";
         public string WhiteIconExt { get; set; } = "txt";
         public string RedIconExt { get; set; } = "pdf";
@@ -261,7 +262,7 @@ namespace GridMaster
                                     if (File.Exists(black))
                                         File.Move(black, white);
                                     else
-                                        File.Copy(".\\1.jpg", white, true);
+                                        File.Copy(IconSource, white, true);
 
                                     File.Delete(r);
                                     File.Delete(g);
@@ -270,20 +271,20 @@ namespace GridMaster
                                 else if (pixel == 'r' || pixel == 'R')
                                 {
 
-                                    File.Copy(".\\1.jpg", r, true);
+                                    File.Copy(IconSource, r, true);
                                     File.Delete(white);
                                     File.Delete(black);
 
                                 }
                                 else if (pixel == 'g' || pixel == 'G')
                                 {
-                                    File.Copy(".\\1.jpg", g, true);
+                                    File.Copy(IconSource, g, true);
                                     File.Delete(white);
                                     File.Delete(black);
                                 }
                                 else if (pixel == 'b' || pixel == 'B')
                                 {
-                                    File.Copy(".\\1.jpg", b, true);
+                                    File.Copy(IconSource, b, true);
                                     File.Delete(white);
                                     File.Delete(black);
                                 }
@@ -293,7 +294,7 @@ namespace GridMaster
                                     if (File.Exists(white))
                                         File.Move(white, black);
                                     else
-                                        File.Copy(".\\1.jpg", black, true);
+                                        File.Copy(IconSource, black, true);
 
                                     File.Delete(r);
                                     File.Delete(g);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandDrawing));
             this.txtText = new System.Windows.Forms.TextBox();
             this.txtPreview = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -52,6 +53,7 @@
             this.txtPath = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemIcon = new System.Windows.Forms.ToolStripMenuItem();
             this.اتصالبهوبکمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.بازکردنفایلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +74,7 @@
             this.btnPlay = new System.Windows.Forms.PictureBox();
             this.btnPre = new System.Windows.Forms.PictureBox();
             this.lblNim = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).BeginInit();
@@ -86,6 +89,7 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // txtText
@@ -140,7 +144,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 2000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btnPause
@@ -273,7 +277,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(276, 56);
             this.btnUpdate.TabIndex = 22;
             this.btnUpdate.TabStop = false;
-            this.btnUpdate.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.Apply);
             this.btnUpdate.MouseLeave += new System.EventHandler(this.btnUpdate_MouseLeave);
             this.btnUpdate.MouseHover += new System.EventHandler(this.btnUpdate_MouseHover);
             this.btnUpdate.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnUpdate_MouseMove);
@@ -334,10 +338,9 @@
             // txtPath
             // 
             this.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPath.Enabled = false;
             this.txtPath.Location = new System.Drawing.Point(504, 445);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(142, 16);
+            this.txtPath.Size = new System.Drawing.Size(137, 16);
             this.txtPath.TabIndex = 27;
             this.txtPath.MouseHover += new System.EventHandler(this.txtPath_MouseHover);
             // 
@@ -359,6 +362,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemIcon,
             this.اتصالبهوبکمToolStripMenuItem,
             this.toolStripMenuItem2,
             this.بازکردنفایلToolStripMenuItem,
@@ -369,41 +373,49 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 30);
             this.fileToolStripMenuItem.Text = "فایل";
             // 
+            // itemIcon
+            // 
+            this.itemIcon.Image = global::GridMaster.Properties.Resources.black1;
+            this.itemIcon.Name = "itemIcon";
+            this.itemIcon.Size = new System.Drawing.Size(234, 34);
+            this.itemIcon.Text = "انتخاب تصویر آیکون ها";
+            this.itemIcon.Click += new System.EventHandler(this.سورستصویرToolStripMenuItem_Click);
+            // 
             // اتصالبهوبکمToolStripMenuItem
             // 
             this.اتصالبهوبکمToolStripMenuItem.Name = "اتصالبهوبکمToolStripMenuItem";
-            this.اتصالبهوبکمToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
-            this.اتصالبهوبکمToolStripMenuItem.Text = "...اتصال به وبکم";
+            this.اتصالبهوبکمToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            this.اتصالبهوبکمToolStripMenuItem.Text = "اتصال به وبکم";
             this.اتصالبهوبکمToolStripMenuItem.Click += new System.EventHandler(this.اتصالبهوبکمToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(187, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(231, 6);
             // 
             // بازکردنفایلToolStripMenuItem
             // 
             this.بازکردنفایلToolStripMenuItem.Name = "بازکردنفایلToolStripMenuItem";
-            this.بازکردنفایلToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+            this.بازکردنفایلToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
             this.بازکردنفایلToolStripMenuItem.Text = "بازکردن";
             this.بازکردنفایلToolStripMenuItem.Click += new System.EventHandler(this.بازکردنفایلToolStripMenuItem_Click);
             // 
             // ذخیرهToolStripMenuItem
             // 
             this.ذخیرهToolStripMenuItem.Name = "ذخیرهToolStripMenuItem";
-            this.ذخیرهToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
-            this.ذخیرهToolStripMenuItem.Text = "ذخیره";
+            this.ذخیرهToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            this.ذخیرهToolStripMenuItem.Text = "ذخیره ترسیمات";
             this.ذخیرهToolStripMenuItem.Click += new System.EventHandler(this.ذخیرهToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(187, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(231, 6);
             // 
             // خروجToolStripMenuItem
             // 
             this.خروجToolStripMenuItem.Name = "خروجToolStripMenuItem";
-            this.خروجToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+            this.خروجToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
             this.خروجToolStripMenuItem.Text = "خروج";
             this.خروجToolStripMenuItem.Click += new System.EventHandler(this.خروجToolStripMenuItem_Click);
             // 
@@ -522,11 +534,22 @@
             // lblNim
             // 
             this.lblNim.BackColor = System.Drawing.Color.Lime;
-            this.lblNim.Location = new System.Drawing.Point(12, 195);
+            this.lblNim.Location = new System.Drawing.Point(12, 183);
             this.lblNim.Name = "lblNim";
-            this.lblNim.Size = new System.Drawing.Size(776, 376);
+            this.lblNim.Size = new System.Drawing.Size(770, 394);
             this.lblNim.TabIndex = 31;
             this.lblNim.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Location = new System.Drawing.Point(668, 23);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(27, 36);
+            this.pictureBox4.TabIndex = 32;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // HandDrawing
             // 
@@ -534,6 +557,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GridMaster.Properties.Resources.bg1;
             this.ClientSize = new System.Drawing.Size(782, 568);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.lblNim);
             this.Controls.Add(this.btnPre);
             this.Controls.Add(this.btnPlay);
@@ -558,6 +582,7 @@
             this.Controls.Add(this.txtText);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "HandDrawing";
             this.Text = "HandDrawing";
@@ -582,6 +607,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,5 +658,7 @@
         private ToolStripMenuItem باقیماندنرویصفحهToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem4;
         private ToolStripMenuItem نسخهمدرنToolStripMenuItem;
+        private ToolStripMenuItem itemIcon;
+        private PictureBox pictureBox4;
     }
 }

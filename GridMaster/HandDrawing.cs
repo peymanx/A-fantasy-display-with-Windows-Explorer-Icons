@@ -15,7 +15,7 @@ namespace GridMaster
     {
 
 
-        public string Path = @".\Video";
+        public string Path = @"F:\Peyman\Desktop\screen";
         public Generator Generator = new Generator();
         private bool mouseDown;
     private Point lastLocation;
@@ -72,18 +72,21 @@ namespace GridMaster
             btnPause_Click(sender, e);
             if (e.KeyCode == Keys.Enter)
             {
-                Generator.Frame = 0;
-                Generator.UpdateScreen(txtText.Text);
-
-                if (Generator.Screen[0].Length < Generator.NumberOfCols)
-                    Generator.Screen = Generator.Word(txtText.Text + Generator.ExtraSpace);
-
-                txtPreview.Text = Generator.PreviewFrame();
-                Generator.Icons(Path);
-
-
+       ApplyText();
 
             }
+        }
+
+        private void ApplyText()
+        {
+            Generator.Frame = 0;
+            Generator.UpdateScreen(txtText.Text);
+
+            if (Generator.Screen[0].Length < Generator.NumberOfCols)
+                Generator.Screen = Generator.Word(txtText.Text + Generator.ExtraSpace);
+
+            txtPreview.Text = Generator.PreviewFrame();
+            Generator.Icons(Path);
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -110,7 +113,7 @@ namespace GridMaster
             apply(sender, e);
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void Apply(object sender, EventArgs e)
         {
             Directory.GetFiles(Path).ToList().ForEach(File.Delete);
             Generator.Icons(Path);
@@ -279,6 +282,7 @@ namespace GridMaster
         {
             txtText.Text = "   ";
             apply(sender, e);
+            ApplyText();
             txtText.SelectAll();
             txtText.Focus();
         }
@@ -520,6 +524,31 @@ namespace GridMaster
         private void دربارهبرنامهنویسToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new PeymanX().ShowDialog();
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void سورستصویرToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var open = new OpenFileDialog
+            {
+                Title = "هر فایل تصویری| *.ico;*.png;*.jpg;*.bmp"
+            };
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                Generator.IconSource = open.FileName;
+                itemIcon.Image = Image.FromFile(open.FileName);
+                Apply(sender, e);
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            کوچولوشوToolStripMenuItem_Click(sender, e);
         }
     }
 }

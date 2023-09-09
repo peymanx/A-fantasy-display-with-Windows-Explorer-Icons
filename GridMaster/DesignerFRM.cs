@@ -53,7 +53,6 @@ namespace GridMaster
                   
 
                         pixel = Generator.Screen[i][j].ToString();
-                   
                     var btn = new Button
                     {
                         Text = i * Generator.NumberOfCols + j + 1 + "",
@@ -62,9 +61,12 @@ namespace GridMaster
                         Height = pixel_size,
                         Tag = new Grid(i, j),
                         Margin = new Padding(0),
+                        BackgroundImageLayout = ImageLayout.Zoom
 
 
                     };
+                    btn.BackgroundImage = null;
+
                     if (pixel == " " || pixel == "@")
                         btn.BackColor = Color.White;
                     else if (pixel.ToUpper() == "R")
@@ -75,7 +77,13 @@ namespace GridMaster
                         btn.BackColor = Color.Blue;
 
                     else
+                    {
                         btn.BackColor = Color.Black;
+                        btn.BackgroundImage = Image.FromFile(Generator.IconSource);
+
+                    
+                    }
+
 
 
                     btn.MouseUp += Btn_Click;
@@ -100,10 +108,11 @@ namespace GridMaster
 
             if (click.Button == MouseButtons.Left)
             {
-
+                btn.BackgroundImage = null; ;
                 if (btn.BackColor == Color.White)
                 {
                     btn.BackColor = Color.Black;
+                    btn.BackgroundImage = Image.FromFile(Generator.IconSource);
                     Generator.Screen[grid.Y] = Generator.Screen[grid.Y].Remove(grid.X, 1).Insert(grid.X, "X");
                 }
                 else
